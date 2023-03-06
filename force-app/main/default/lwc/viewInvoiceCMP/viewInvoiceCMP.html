@@ -1,0 +1,314 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:opportunity">
+        <h1 slot="title"><span>Invoices</span>
+            <br>
+            <span style="font-size: small; font-weight: 100">{records.name}</span></h1>
+        
+        <div slot="actions">            
+            <!-- <li class="slds-button">
+                <lightning-button label="Send Invoice PDF as Email"  onclick={sendInvoicePDFasEmail} data-id={records.Id} variant="brand"></lightning-button>
+            </li> -->
+            <li class="slds-button">
+                <lightning-button label="Download Invoice as PDF"  onclick={DownloadInvoiceasPDF} data-id={records.Id} variant="brand" disabled={hideDownloadPDFButton}></lightning-button>
+            </li>
+            <!-- <li class="slds-button">
+                <lightning-button label="Edit" data-id={records.Id} variant="brand"></lightning-button>
+            </li> -->
+        </div>
+    </lightning-card>
+    <br>
+    <div class="slds-card slds-grid slds-grid_vertical article slds-m-bottom_small">
+        <div class="slds-align_absolute-center">
+            <lightning-spinner if:false={spinnerStatus} variant="brand" size="medium">
+            </lightning-spinner>
+        </div>
+        
+        
+    <div class="slds-card__header slds-p-bottom_small slds-border_bottom">
+
+       <lightning-layout multiple-rows class="search-bar">
+            <lightning-layout-item size="1" flexibility="auto">
+                <span style="text-align:left">
+                    <button type="button" onclick={goBackHandler} class="slds-button slds-button_brand slds-float_left">Go Back</button>
+                </span>
+                
+            </lightning-layout-item>
+            <lightning-layout-item size="8" flexibility="auto">                
+            </lightning-layout-item>
+            <lightning-layout-item size="3" flexibility="auto">
+              
+               <span style="text-align:right">
+                <button type="button" onclick={cashMemoHandler} data-id={records.recId} class="slds-button slds-button_brand slds-float_right">Void</button>
+               </span>
+                
+            
+            </lightning-layout-item>
+         </lightning-layout>
+
+         <br>
+         <br>
+     <table class="slds-table slds-no-row-hover slds-max-medium-table_stacked-horizontal tablecol">
+      <tbody style="border-color: #ddd;background-color:rgb(255,255,255); ">
+       <tr style="border-bottom:0ch">
+        <td class="slds-size_1-of-3" style="visibility:visible" valign="top">
+ 
+            <b>Billing Address </b>
+            <div class="slds-truncate slds-p-top_small" style="white-space: initial;">
+              <!-- <span>{accountName}</span> -->
+            </div>
+            
+            <div class="slds-truncate slds-p-top_small" style="white-space: initial;">
+                <span style="white-space: pre-wrap;">{records.billStreet}</span><br>
+                <span>{records.billCity}</span> <br>
+                <span>{records.billState} , {records.billPostal}</span><br>
+                <span>{records.billCountry}</span>
+                
+            </div>
+        </td> 
+        <td class="slds-size_1-of-3 removeverticalpadding">
+            <div class="slds-grid slds-wrap">
+             <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style"
+             style="color:#c75c29;font-weight:bold;">
+                <span class="slds-truncate slds-form-element__label alignrightt form-label-alignment slds-size_1-of-3">
+              <b style="color: #54698d;padding-right: 0.5rem;padding-top:unset">Status</b></span>
+              <span class={records.bgClass}>{records.status}</span>
+             </div>   
+            
+             <template if:true={records.dueDays}>
+                <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style">
+                    <span class="slds-truncate slds-form-element__label alignrightt form-label-alignment slds-size_1-of-3">
+                        <b style="color: #54698d;">Days Overdue</b>
+                    </span>
+                    <span class="slds-size_2-of-3 slds-text-align_left">{records.dueDays}</span>
+                </div>
+             </template>
+
+             
+             <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style">
+                <span class="slds-truncate slds-form-element__label alignrightt form-label-alignment slds-size_1-of-3">
+                    <b style="color: #54698d;">Email Status</b>
+                </span>
+                <span class="slds-size_2-of-3 slds-text-align_left">
+                    {records.emailStatus}
+                </span>
+            </div>
+            
+            <div class="slds-form-element slds-form-element_edit slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style" style="display:inline-table">
+                <span class="slds-truncate slds-form-element__label alignrightt form-label-alignment slds-size_1-of-3">
+                    <b style="color: #54698d;">Email</b>
+                </span>
+                <span class="slds-size_2-of-3 slds-text-align_left" style="font-weight:bold">
+                    {records.email}
+                </span>
+            </div>
+            
+            <div></div>
+            </div>
+        </td>
+        <td class="slds-size_1-of-3 removetoppadding">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-form-element slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style">
+                    
+                    <span class="slds-form-element__label alignrightt form-label-alignment slds-size_1-of-2">
+                   <b style="color: #54698d;">Invoice Date</b>
+                    </span>
+                    <span class="slds-size_1-of-2 slds-text-align_left">
+                        <span>{records.invoiceDate}</span>
+                    </span>
+                </div>
+                <div class="slds-form-element slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style">
+                    <span class="slds-form-element__label alignrightt form-label-alignment slds-size_1-of-2">
+                        <b style="color: #54698d;">Policy#</b>
+                    </span>
+                    <span class="slds-size_1-of-2 slds-text-align_left">
+                        <span>{records.policy}</span>
+                    </span>
+                </div>
+                <div class="slds-form-element slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style">
+                    <span class="slds-form-element__label alignrightt form-label-alignment slds-size_1-of-2">
+                        <b style="color: #54698d;">Sales Rep</b>
+                    </span>
+                    <span class="slds-size_1-of-2 slds-text-align_left">
+                        <span>{records.salesRep}</span>
+                    </span>
+                </div>
+                <div class="slds-form-element slds-hint-parent slds-form_horizontal slds-size_1-of-1 div-table-style">
+                    <span class="slds-form-element__label alignrightt form-label-alignment slds-size_1-of-2">
+                        <b style="color: #54698d;">Inception Date</b>
+                    </span>
+                    <span class="slds-size_1-of-2 slds-text-align_left">
+                        <span>{records.inceptionDate}</span>
+                    </span>
+                </div>
+            </div>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="slds-card__body slds-card__body_inner slds-col " style="margin-bottom:0px;">
+        <div class="slds-card article" style="border: 0px">
+            <div class="slds-card__header  slds-grid slds-m-bottom_none" style="padding-left: 0px;">
+                <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-custom-custom93" title="Line Items">
+                            <svg aria-hidden="true" class="slds-icon slds-icon_medium">
+                              <use xlink:href="/_slds/icons/custom-sprite/svg/symbols.svg#custom93"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Line Item</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <span class="slds-text-heading_small">Line Items</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="slds-card__body slds-m-top_small"> -->
+            <div class="slds-m-top_small">
+                <table class="slds-table slds-no-row-hover slds-m-bottom_x-small slds-table_bordered slds-border_right slds-border_left slds-max-medium-table_stacked-horizontal Borderstyling"
+                cellpadding="0" border="0" cellspacing="0">
+                <colgroup>
+                    <col width="2%">
+                    <col width="7%">
+                    <col width="25%">
+                    <col width="7%">
+                    <col width="7%">
+                    <col width="4%">
+                    <col width="10%">
+                </colgroup>
+                  <thead>
+                    <th scope="col" colspan="1"><div>#</div></th>
+                    <th scope="col" colspan="1"><div>Activity</div></th>
+                    <th scope="col" colspan="1"><div>Description</div></th>
+                    <th class="slds-text-align_right" colspan="1" scope="col"><div>Quantity</div></th>
+                    <th class="slds-text-align_right" colspan="1" scope="col"><div>Unit Price</div></th>
+                    <th class="slds-text-align_center" colspan="1" scope="col"><div>Tax</div></th>
+                    <th class="slds-text-align_right" colspan="1" scope="col" ><div>Amount(USD)</div></th>
+                  </thead>
+                  <tbody>
+                    <template if:true={LineItems}>
+                        <template for:each={LineItems} for:item="LineItem">
+                            <tr key={LineItem.id}>
+                                <td colspan="1"><a href="#">{LineItem.srNo}</a></td>
+                                <td colspan="1"><a href={LineItem.URL} data-id={LineItem.id} >{LineItem.productService}</a></td>
+                                <td colspan="1">{LineItem.srdesc}</td>
+                                <td colspan="1" style="text-align:right">
+                                    <lightning-formatted-number format-style="decimal" value={LineItem.quantity} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></td>
+                                <td colspan="1" style="text-align:right">                     
+                                    <!-- {LineItem.rate}                -->
+                                    <lightning-formatted-number format-style="decimal" value={LineItem.lineamount} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                                </td>
+                                <td class="slds-text-align_center taxwidth" colspan="1" style="width: 2%">
+                                    <input type="checkbox" class="slds-checkbox" disabled="disabled">
+                                    <span class="slds-checkbox_faux"></span>
+                                </td>
+                                <td class="slds-text-align_right" colspan="1">
+                                    <lightning-formatted-number value={LineItem.lineamount} format-style="currency" currency-code="USD" currency-display-as="symbol" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></span>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>                    
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="slds-grid_reverse rightsection">
+            <table class="slds-table slds-no-row-hover  rightTable  rightsection" style="width:400px;">
+             <tbody>
+                <tr>
+                    <td class="first">Subtotal</td>
+                    <td class="second">
+                        <lightning-formatted-number readonly="" format-style="currency" value={records.totalAmount} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="slds-truncate first">Total Tax</td>
+                    <td class="slds-truncate second">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="slds-truncate totalAmount">Total Amount</td>
+                    <td class="slds-truncate totalAmount">
+                        <lightning-formatted-number readonly="" format-style="currency" value={records.totalAmount} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+             </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="slds-card__body slds-card__body_inner slds-col">
+        <table class="slds-table slds-no-row-hover">
+            <tbody><tr style="visibility:visible">
+                <td class="first" style="padding:0px;">
+                    <div class="slds-form-element slds-hint-parent slds-p-top_small" style="">
+                        <span class="slds-form-element__label" style="color: #54698d;">Message displayed on Invoice</span>
+                        <div class="slds-form-element__control slds-p-left_xx-small" style="white-space: normal;">
+                            <span class="slds-form-element__static slds-border_bottom widthStyle" style="width: 45%;"><span id="page:theForm:j_id274">Please make checks payable to <br>BOLD LEGAL DEFENSE INSURANCE, INC.<br><br>2385 NW E</span>
+                           <!-- Open Modal onclick of read More -->
+                            <a onclick={showModal}  >...Read more</a> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-p-top_medium" style="">
+                        <span class="slds-form-element__label" style="color: #54698d;">Memo</span>
+                        <div class="slds-form-element__control slds-p-left_xx-small" style="white-space: normal;">
+                            <p>{records.statement}</p>
+                            <!-- <span class="slds-form-element__static slds-border_bottom widthStyle" style="width: 45%;">
+                                <span>BOUNCE CHEK</span> <a onclick={showModal} style="display:none">...Read more</a>
+                            </span> -->
+                        </div>
+                    </div>                                                    
+                </td>
+            </tr>  
+            
+        </tbody></table>
+        </div>
+    </div>
+    
+    
+    
+
+
+     <section
+        role="dialog"
+        tabindex="-1"
+        aria-labelledby="modal-heading-01"
+        aria-modal="true"
+        class={modalClassAss}
+        >
+        <div class="slds-modal__container">
+           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeModal}>
+              <h1>X</h1>
+              <span class="slds-assistive-text">Cancel and close</span>
+           </button>
+           <div class="slds-modal__header">
+              <h3 class="slds-section__title slds-theme_shade"> 
+                  <span class="slds-truncate slds-p-horizontal_small" title="Message displayed on Invoice">
+                    Message displayed on Invoice</span>
+               </h3>
+           </div>
+           <div
+              class="slds-modal__content slds-p-around_medium"
+              id="modal-content-id-1">
+               
+              <span>Please make checks payable to <br>BOLD LEGAL DEFENSE INSURANCE, INC.<br><br>2385 NW Executive Center Drive<br>Suite 100<br>Boca Raton, FL 33431-8579<br>(561) 988-1600</span>
+            </div>
+           <div class="slds-modal__footer">
+               
+                 <lightning-button
+                 label="Close"
+                 onclick={closeModal}
+                 title="Click for Cancel" 
+                 class="slds-m-left_x-small"
+                 ></lightning-button>
+              
+           </div>
+        </div>
+     </section>
+     <div class={modalBackdropClassAss} role="presentation"></div>
+
+
+</template>

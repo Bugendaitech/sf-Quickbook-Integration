@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Amount_Unapplied__c</fullName>
+    <deprecated>false</deprecated>
+    <description>UnappliedAmt or Amount Credited</description>
+    <externalId>false</externalId>
+    <label>Amount Unapplied</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

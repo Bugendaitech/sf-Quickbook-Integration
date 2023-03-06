@@ -1,0 +1,6 @@
+ @font-face {
+                font-family: "Vladimir Script'";
+                src:url("{!URLFOR($Resource.VLADIMIR, 'VLADIMIR.ttf')}") format('truetype');  
+                }
+
+                

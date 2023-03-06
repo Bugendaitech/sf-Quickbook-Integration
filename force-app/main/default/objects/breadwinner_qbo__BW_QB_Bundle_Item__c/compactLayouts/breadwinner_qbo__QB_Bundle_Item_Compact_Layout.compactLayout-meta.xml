@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__QB_Bundle_Item_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>breadwinner_qbo__Item__c</fields>
+    <fields>breadwinner_qbo__Quantity__c</fields>
+    <label>QuickBooks Bundle Item Compact Layout</label>
+</CompactLayout>

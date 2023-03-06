@@ -1,0 +1,14 @@
+.refresh-icon{
+    margin-top: 4px;
+}
+.heading{
+    margin-top: 10px;
+}
+.slds-card__body{
+    margin-top:none;
+    padding-top:none;
+}
+.slds-card__header{
+    padding-top:none;
+    margin-top:none;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Payment_Reference_Number__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Payment Reference Number of the related Payment</description>
+    <externalId>false</externalId>
+    <formula>breadwinner_qbo__Payment__r.breadwinner_qbo__Reference_Number__c</formula>
+    <label>Payment Reference Number</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

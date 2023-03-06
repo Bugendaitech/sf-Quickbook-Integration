@@ -1,0 +1,48 @@
+<template>
+        <div class="main-container">
+            <c-custom-toast-notification
+            timeout={timeout}
+            sticky={sticky}
+            ></c-custom-toast-notification>
+            <div class="slds-page-header" role="banner">
+                <div class="slds-media slds-media_center">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-user">
+                            <svg aria-hidden="true" class="slds-icon">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#moneybag"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <p class="slds-page-header__title">{_titleText}</p>
+                        <p class="slds-text-body_small">{_smallText} </p>
+                    </div>
+                </div>
+            </div>
+            <lightning-card class="indicator-card slds-p_medium">
+                <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                    <!-- <lightning-progress-step label="Step 1" value="1" onclick={handleOnStepClick}></lightning-progress-step> -->
+                    <lightning-progress-step label="Chosen Account" data-value="1"></lightning-progress-step>
+                    <lightning-progress-step label="Create New Customer" data-value="2" value="2" onclick={handleOnStepClick}></lightning-progress-step>              
+                    <lightning-progress-step label="Create QuickBooks Invoice" data-value="3" value="3" onclick={handleOnStepClick}></lightning-progress-step>
+    
+                </lightning-progress-indicator>
+            </lightning-card>
+            
+        <template if:true={isStepOne}>
+        <div></div>
+        </template>
+
+        <template if:true={isStepTwo}>
+        <div>
+            <c-create-new-customer-c-m-p  record-id={paramValue} onresultvalue={handlenewInv}  oncustval={handlecustNavId}></c-create-new-customer-c-m-p>
+        </div>
+        </template>
+        <template if:true={isStepThree}>
+        <div>
+           <c-create-invoice-C-M-P company-id={navCustomerId} record-id={paramValue}  billing-address={billingAddress} commission={commision} indicated-perimum={indiactedPerimum} discount-value={discountValue} ></c-create-invoice-C-M-P>
+        </div>
+        </template>
+        
+        </div>
+</template>

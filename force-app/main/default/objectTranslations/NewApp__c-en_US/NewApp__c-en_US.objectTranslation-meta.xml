@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>New Applications</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>New Applications</value>
+    </caseValues>
+    <layouts>
+        <layout>Client Layout</layout>
+        <sections>
+            <label></label>
+            <section>Agent Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Producer Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Underwriting Detail</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Applicant3</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

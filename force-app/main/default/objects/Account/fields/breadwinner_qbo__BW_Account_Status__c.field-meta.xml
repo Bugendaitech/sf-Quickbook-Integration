@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__BW_Account_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF( breadwinner_qbo__Total_Amount_Invoiced__c = 0, 
+IMAGE ( &quot;https://breadwinner.com/wp-content/uploads/2020/06/Never-Billed.png&quot;,&quot;Never Billed&quot;), 
+
+IF( breadwinner_qbo__Total_Amount_Overdue__c &gt; 0, 
+IMAGE ( &quot;https://breadwinner.com/wp-content/uploads/2020/06/Overdue.png&quot;,&quot;Overdue&quot;), 
+
+IF( breadwinner_qbo__Total_Amount_Due__c &gt; 0, 
+IMAGE ( &quot;https://breadwinner.com/wp-content/uploads/2020/06/Due.png&quot;,&quot;Due&quot;), 
+
+IMAGE ( &quot;https://breadwinner.com/wp-content/uploads/2020/06/Paid.png&quot;,&quot;Paid&quot;) 
+
+) 
+) 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>BW Account Status</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

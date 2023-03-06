@@ -1,0 +1,75 @@
+<template>
+      <lightning-card>
+        <div class="slds-align_absolute-center">
+          <lightning-spinner if:false={spinnerStatus} variant="brand" size="medium">
+          </lightning-spinner>
+      </div>
+          <div class="slds-var-m-around_medium">
+         
+            <br>
+            <lightning-layout multiple-rows>
+              <lightning-layout-item size="8">
+            <p>
+              <b>Select the QuickBooks Customer for this Transaction </b>
+            </p>
+            </lightning-layout-item>
+            </lightning-layout>
+            <!-- <lightning-layout multiple-rows> -->
+              <!-- <lightning-layout-item size="12"> -->
+            <fieldset class="slds-form-element">
+              <legend class="slds-form-element__legend slds-form-element__label"></legend>
+              <div class="slds-form-element__control">
+              <span class="slds-radio">
+              <input type="radio" id="radio-75" value="NewCust" name="default" onclick={handleNewCustomer}/>
+              <label class="slds-radio__label" for="radio-75">
+              <span class="slds-radio_faux"></span>
+              <span class="slds-form-element__label" style="font-size:15px">Create a new QuickBooks Customer</span><br>
+                <span class="slds-var-m-around_medium">You can have multiple QuickBooks Customers associated with a single Salesforce Account.This might happen if you have different departments,branches or offices of the same company.</span>
+              </label>
+              </span>
+              <br>
+              <template for:each={records} for:item="op" for:index="index">
+              <span class="slds-radio" key={op.id} style="padding-bottom: 15px;">
+                <template if:true={op.isChecked}>
+                  <input type="radio" value={op.id}   id={op.id} name="default" checked="" onclick={handleNewCustomer} />
+                </template>
+                <template if:false={op.isChecked}>
+                  <input type="radio" value={op.id}  id={op.id} name="default" onclick={handleNewCustomer} />
+                </template>
+              
+              <label class="slds-radio__label" for={op.id}>
+              <span class="slds-radio_faux"></span>
+              <span class="slds-form-element__label" style="font-size:15px;">Use Existing QuickBooks Customer: {op.displayName} <a  onclick={handleNavigate} data-id={op.id}>Edit QuickBooks Customer before Creating the Transaction</a></span>
+              <br><span class="slds-var-m-around_medium">This QuickBooks Company is a Sub Company.The Full Company Hierarchy is {op.companyName}:{op.displayName} </span>  
+                
+               <div class="slds-grid slds-m-top_small">
+                                                            
+              <div class="slds-m-left_x-large slds-page-header__detail-block">
+                    <p class="slds-truncate slds-m-bottom_xx-small"><b>Company Information:</b></p>
+                    <div class="slds-text-body_regular slds-truncate">
+                      <span title="Display Name">{op.displayName}<br></span>
+                      <span title="Billing Street">{op.streetAddress}<br></span>
+                      <span title="Billing City Billing State Billing Zip">{op.city}&nbsp;{op.state}<br></span>
+                            <span title="Billing Country">{op.postalCode}&nbsp;{op.country}</span>
+                    </div>
+                </div>
+                <div class="slds-m-left_x-large slds-page-header__detail-block" style="margin-left: 10%;">
+                    <p class="slds-truncate slds-m-bottom_xx-small"><b>Contact Info:</b></p>
+                    <div class="slds-text-body_regular slds-truncate">
+                      <span title="First Name">{op.givenFName}<br></span> 
+                      <span title="Email">{op.email}<br></span>
+                      <span title="Phone">{op.phoneNum}<br></span>
+
+                    </div>
+                </div>
+              </div>
+            </label>
+              </span>
+            </template>
+              
+              </div>
+              </fieldset>              
+              <br>
+              </div>
+          </lightning-card>
+          </template>

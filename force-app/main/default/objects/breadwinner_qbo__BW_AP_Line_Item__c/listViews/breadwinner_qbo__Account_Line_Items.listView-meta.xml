@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Account_Line_Items</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_qbo__Bill_PO_Account__c</columns>
+    <columns>breadwinner_qbo__AP_AR_Account__c</columns>
+    <columns>breadwinner_qbo__Description__c</columns>
+    <columns>breadwinner_qbo__Amount__c</columns>
+    <columns>breadwinner_qbo__Billable_Status__c</columns>
+    <columns>breadwinner_qbo__MarkupInfo__c</columns>
+    <columns>breadwinner_qbo__Tax__c</columns>
+    <columns>breadwinner_qbo__Tax_Amount__c</columns>
+    <columns>breadwinner_qbo__Customer__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>breadwinner_qbo__Type__c</field>
+        <operation>equals</operation>
+        <value>Account Line</value>
+    </filters>
+    <label>Account based Line Items</label>
+</ListView>

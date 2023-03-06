@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QB_Payment_Id__c</fullName>
+    <description>Id field of the Payment
+Format: [CompanyID]-[PaymentID]</description>
+    <externalId>true</externalId>
+    <label>Payment Id</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

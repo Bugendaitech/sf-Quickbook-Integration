@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Vendors</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_qbo__Display_Name__c</columns>
+    <columns>breadwinner_qbo__Company_Name__c</columns>
+    <columns>breadwinner_qbo__Salesforce_Account__c</columns>
+    <columns>breadwinner_qbo__Currency__c</columns>
+    <columns>breadwinner_qbo__Phone_Number__c</columns>
+    <columns>breadwinner_qbo__Email__c</columns>
+    <columns>breadwinner_qbo__City__c</columns>
+    <columns>breadwinner_qbo__Region__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>breadwinner_qbo__Type__c</field>
+        <operation>equals</operation>
+        <value>Vendor</value>
+    </filters>
+    <label>Vendors</label>
+</ListView>

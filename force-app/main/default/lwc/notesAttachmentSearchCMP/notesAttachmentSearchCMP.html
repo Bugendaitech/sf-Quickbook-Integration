@@ -1,0 +1,100 @@
+<template> 
+    <div class="main-div">
+        <div class="slds-align_absolute-center">
+            <lightning-spinner if:false={spinnerStatus} variant="brand" size="medium">
+            </lightning-spinner>
+        </div>     
+         
+        <template if:true={showText}>             
+            <br>
+            <p style="text-align:center">Your Customer is Created and Synced Successfully</p>
+        </template> 
+        
+        <div class="slds-m-around_medium">
+             
+                <lightning-layout multiple-rows class="search-bar">
+                    <lightning-layout-item size="11" flexibility="auto">
+                        <div
+                            class="slds-col slds-small-size_11-of-11 slds-medium-size_11-of-11 slds-large-size_11-of-11 slds-scrollable--x">
+                            <lightning-layout-item flexibility="auto" padding="around-small">
+                                <lightning-input
+                                class= {inputClass}
+                                type="search"
+                                variant="label-hidden"
+                                label=""
+                                placeholder={searchPlaceholder}
+                                value={searchTerm}  
+                                autocomplete="false"
+                                onchange={searchKeyword}
+                                
+                                >
+                                </lightning-input>      
+                                <template if:true={showMessage}>
+                                    
+                                    <span style="color:red">Please enter more than 2 characters</span>
+                                </template>
+                                 
+                                       
+                            </lightning-layout-item>                              
+                        </div>
+                    </lightning-layout-item>
+                    
+                    <lightning-layout-item size="1" flexibility="auto" padding="around-medium">
+                        <span style="padding:2px;text-align:right">    
+                            <button class="slds-button slds-button_icon slds-button_icon-border" title="Refresh" onclick={refreshFiles}>
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.28.0#refresh"></use>
+                                </svg>
+                            </button>
+                            </span>
+                    </lightning-layout-item>
+                </lightning-layout>
+                 
+
+             
+            <lightning-layout>
+                <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> 
+                </lightning-spinner>  
+                <template if:true={haveData}>
+                    <lightning-layout-item size="12" flexibility="auto">
+                        <div
+                            class="slds-col slds-small-size_11-of-11 slds-medium-size_11-of-11 slds-large-size_11-of-11 slds-scrollable--x">
+                            <span class="custom-box">
+                                <table class="slds-table slds-table_cell-buffe table slds-scrollable ownTable"
+                                    aria-label="Job Allocations">
+                                    <thead class=" slds-p-around_small">
+                                        <tr class="slds-line-height_reset">
+                                            <th scope="col">
+                                                Name
+                                            </th>
+                                            <th scope="col">
+                                                File URL
+                                            </th> 
+                                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                            <template for:each={files} for:item="PG"> 
+                                                <tr key={PG.Id}>    
+                                                    <td>{PG.ContentDocument.Title}</td>                                                    
+                                                    <td><a title="Click Here to Open" class="slds-badge" onclick={handleClick} data-oppid={PG.ContentDocument.Id} target="_blank">View</a></td>                                                
+                                                </tr>                                           
+                                            </template>
+                                        
+                                        <template if:false={haveData}>
+                                            <tr>
+                                                <td colspan="2" class="no-data">No Notes and Attachments Find</td>
+                                            </tr>
+                                        </template>
+                                        
+                                    </tbody>
+                                </table>
+                            </span>
+                        </div>
+                    </lightning-layout-item>
+                </template>  
+                </lightning-layout>
+        </div>
+    </div>
+</template>

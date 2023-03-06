@@ -1,0 +1,211 @@
+<apex:page controller="Getpdfdata" renderAs="pdf" showHeader="false" cache="true" readOnly="true">
+    <html>
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>PDF</title>
+            <style type="text/css">
+                *{margin: 0;padding: 0;}
+                ​
+                th, td{padding: 8px ;}
+            </style>
+        </head>
+        <body>
+            <div class="" style="max-width: 800px; margin:auto; width: 100%;">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width: 100px;padding-top:0px;">
+                                        <apex:image url="{!$Resource.BoldLegalLogo}" style="margin-top:-5px" width="100" height="40"/>
+                                    </td>
+                                    <td>
+                                        <p><strong>Bold Legal Defense Insurance, Inc.</strong></p>
+                                        <p>2385 N.W. Executive Center Drive, Suite 100 <br/>Boca Raton, FL 33431 US</p>
+                                        <p>561-988-1600</p>
+                                        <p><a href="mailto:alan@boldlegalplans.com" style="color: #000; text-decoration: none;">alan@boldlegalplans.com</a></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <h3 style="font-size: 24px; font-weight: 400; color:#c1202c; margin:0">INVOICE</h3>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="max-width: 400px;">
+                                        <p><strong>BILL TO</strong></p>                                        
+                                        <p><span style="white-space: pre-wrap;overflow-wrap: break-word;word-break: break-all;">{!invoice.Billing_Street_Address__c}</span></p> 
+                                       <!-- <p>{!invoice.Account__r.Name}</p> -->
+                                        <p>{!invoice.Billing_City__c},{!invoice.Billing_State__c} {!invoice.Billing_Postal_Code__c}</p>
+                                    </td>
+                                    <td></td>
+                                    <td style="text-align:right;"> 
+                                        <p><strong>INVOICE # </strong></p>
+                                        <p><strong>DATE </strong></p>
+                                        <p><strong>DUE DATE </strong></p>
+                                        <!--<p><strong>TERMS </strong></p>-->
+                                    </td>
+                                    <td style="text-align:left;padding: 1px ;">
+                                        <p>{!invoiceName}</p>
+                                        <p>{!invoiceDate}</p>
+                                        <p>{!invoiceDueDate}</p>
+                                        <!--<p>{!terms}</p>-->
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%; border-top: solid 3px #f3d2d5">
+                                <tr>
+                                    <td style="width: 49.99995%;">
+                                        <h5>POLICY#</h5>
+                                        <p>{!Invoice.Policy__c}</p>
+                                    </td>
+									
+                                    <!-- <td style="width: 33.3333%;">
+										<span>
+											<apex:outputpanel rendered="{!Invoice.Sales_Rep__c != ''}">
+												<h5>SALES REP</h5>
+												<p>{!Invoice.Sales_Rep__c} </p>	
+											</apex:outputpanel>
+										</span>                                        
+                                    </td>-->
+                                    <td style="width: 49.99995%;">
+                                        <h5>INCEPTION DATE</h5>
+                                        <p> {!invoiceInceptionDate}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                       <td>
+                       
+                            <apex:outputPanel rendered="{!if(showVoid==true , true ,false)}" >     
+                           <!-- <table style="width:100%;border-collapse:collapse" >-->
+                            <table style="width:100%; border:0; background-position: center 0%; background-size: contain; background-repeat: no-repeat;" border="0" background="{!$Resource.Void}" >
+
+                             
+                                <thead style="background: #f3d2d5;">
+                                    <tr>
+                                        <th style=" color: #c1202c;text-align: left; font-size: 15px; font-weight: 400;padding-top:2px;padding-bottom:6px;padding-left:10px;width: 35%;">ACTIVITY</th>
+                                        <th style=" color: #c1202c;text-align: center; font-size: 15px; font-weight: 400;padding-top:2px;padding-bottom:6px;">DESCRIPTION</th>
+
+                                        <th style="color: #c1202c;text-align: right; font-size: 15px; font-weight: 400;padding-top:2%;padding-bottom:4%;padding-right:10px">AMOUNT</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>   
+                                 
+                                   <!-- <td colspan="4"><img style="z-index:99;" src="{!$Resource.Void}">-->
+                                 
+                                    <apex:repeat value="{!subWrapperObj}" var="lineItem">
+                                        <tr>
+                                            <td style="padding-bottom:0"><strong><!--{!record.Product_Service__c}-->{!lineItem.productService}</strong></td>                            
+                                            <td  style="padding-bottom:0;text-align: center;word-wrap: break-word;word-break: break-all;"><!--{!record.Product_Service__c}-->{!lineItem.Description}</td>                            
+
+                                            <td style="text-align:right; padding-bottom:0">
+                                                <span><apex:outputpanel rendered="{!IF(AND(lineItem.productService == 'Commissions',lineItem.lineamount > 0), TRUE, FALSE)}">-</apex:outputpanel>
+                                                      <apex:outputText value="{0, number, 0.00}"><apex:param value="{!lineItem.lineamount}" /></apex:outputText>
+                                                </span>
+                                            </td>
+                                        </tr> 
+                                    </apex:repeat>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3"><div style="border-top: dashed 3px #ccc;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><small>Please make checks payable to <br/> BOLD LEGAL DEFENSE INSURANCE, INC</small></td>
+                                        <td>BALANCE DUE </td>                
+                                        <td class="total" style="font-size: 20px;font-weight: 600; text-align: right;">
+                                            <apex:outputText value="${0,number,###,###,##0.00}"><apex:param value="{!totalGrossAmount}" /></apex:outputText>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                               </apex:outputPanel>
+                              <apex:outputPanel rendered="{!if(showVoid==false , true ,false)}" >     
+                           <table style="width:100%;border-collapse:collapse" >
+                           <!--  <table style="width:100%; border:0; background-position: center 0%; background-size: contain; background-repeat: no-repeat;" border="0" background="{!$Resource.Void}" >-->
+
+                             
+                                <thead style="background: #f3d2d5;">
+                                    <tr>
+                                        <th colspan="" style="width: 35%;color: #c1202c;text-align: left; font-size: 15px; font-weight: 400;padding-top:2px;padding-bottom:6px;padding-left:10px">ACTIVITY</th>
+                                        <th colspan="" style=" color: #c1202c;text-align: center; font-size: 15px; font-weight: 400;padding-top:2px;padding-bottom:6px;">DESCRIPTION</th>
+                                        <th style="color: #c1202c;text-align: right; font-size: 15px; font-weight: 400;padding-top:2%;padding-bottom:4%;padding-right:10px">AMOUNT</th>
+                                    </tr>
+                                    
+                                </thead>
+                                <tbody>   
+                                 
+                                   <!-- <td colspan="4"><img style="z-index:99;" src="{!$Resource.Void}">-->
+                                 
+                                    <apex:repeat value="{!subWrapperObj}" var="lineItem">
+                                        <tr>
+                                            <td colspan="" style="padding-bottom:0"><strong><!--{!record.Product_Service__c}-->{!lineItem.productService}</strong></td>                            
+                                            <td colspan="" style="padding-bottom:0;text-align: center;word-wrap: break-word;word-break: break-all;"><!--{!record.Product_Service__c}-->{!lineItem.Description}</td>                            
+
+                                            <td style="text-align:right; padding-bottom:0">
+                                                <span><apex:outputpanel rendered="{!IF(AND(lineItem.productService == 'Commissions',lineItem.lineamount > 0), TRUE, FALSE)}">-</apex:outputpanel>
+                                                      <apex:outputText value="{0, number, 0.00}"><apex:param value="{!lineItem.lineamount}" /></apex:outputText>
+                                                </span>
+                                            </td>
+                                        </tr> 
+                                    </apex:repeat>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3"><div style="border-top: dashed 3px #ccc;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><small>Please make checks payable to <br/> BOLD LEGAL DEFENSE INSURANCE, INC</small></td>
+                                        <td>BALANCE DUE </td>                
+                                        <td class="total" style="font-size: 20px;font-weight: 600; text-align: right;">
+                                            <apex:outputText value="${0,number,###,###,##0.00}"><apex:param value="{!totalGrossAmount}" /></apex:outputText>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                               </apex:outputPanel>
+                        </td>    
+                        
+                </tr>
+           
+                    <tr>
+                        <td style="padding-top: 0">
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="padding-top: 0">
+                                        <small>
+                                            2385 NW Executive Center Drive <br/> Suite 100 <br/> Boca Raton, FL 33431-8579 <br/> (561) 988-1600
+                                            
+                                        </small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </html>
+</apex:page>

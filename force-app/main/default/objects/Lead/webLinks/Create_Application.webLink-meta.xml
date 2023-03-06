@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Application</fullName>
+    <availability>online</availability>
+    <description>Conga Create Application</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Create Application</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>/apex/APXTConga4__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!Lead.Id}
+&amp;TemplateId=a0d4p000007yVGlAAM</url>
+</WebLink>

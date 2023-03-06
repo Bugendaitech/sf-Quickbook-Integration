@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quote</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Quotes</value>
+    </caseValues>
+    <layouts>
+        <layout>DisableButton PL</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Application Summary</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Policy Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>EnableButton PL</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Application Summary</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Policy Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Quote Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Application Summary</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Policy Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Bind_New</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Bind_New1</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Open_Modal</name>
+    </quickActions>
+    <recordTypes>
+        <label></label>
+        <name>DisableBindButton</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>EnableBindButton</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Create_Quote</name>
+    </webLinks>
+    <workflowTasks>
+        <name>Bind_Order</name>
+        <subject></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

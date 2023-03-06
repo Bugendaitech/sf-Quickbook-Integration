@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Duplicates</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
+    <columns>Agent_to_Bill__c</columns>
+    <columns>Agent_Name_Application__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Duplicate_Account__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Duplicates</label>
+</ListView>

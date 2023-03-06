@@ -1,0 +1,17 @@
+<apex:page sidebar="true" showHeader="true">
+   <apex:includeLightning />    
+    <div id="LightningComponentid" />    
+    <script>
+    $Lightning.use("c:NewCustomerApp", function() {
+        // ("c:bindQuoteModalCMP",("c:multiStepInvoiceCmp",("c:newCustomerCMP",
+        $Lightning.createComponent("c:newCustomerCMP",
+          {
+          paramValue: '{!$CurrentPage.parameters.quoteId}'    
+          },
+          "LightningComponentid",
+          function(cmp) {
+             //console.log('LWC Componenet added in VF page');
+          });
+    });
+    </script>
+</apex:page>

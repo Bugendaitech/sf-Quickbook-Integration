@@ -1,0 +1,196 @@
+<template>
+    <!-- <lightning-card> -->
+      <div class="slds-align_absolute-center">
+         <lightning-spinner if:false={spinnerStatus} variant="brand" size="medium">
+         </lightning-spinner>
+     </div>
+      <!-- <div class="slds-tabs_card"> -->
+         <div class="slds-page-header"   >
+               <div class="slds-page-header__row">
+                  <div class="slds-page-header__col-title">
+                     <div class="slds-media">
+                        <div class="highlights-icon-container slds-avatar slds-m-right_small icon" style="background-color: #43b5b5"><img src="https://bold--bugendai.sandbox.my.salesforce.com/img/icon/t4v35/custom/custom41_120.png" alt=""></div>
+                        <div class="slds-media__body">
+                           <lightning-layout multiple-rows class="search-bar">
+                              <lightning-layout-item size="3" flexibility="auto">
+                                 <div class="slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                       <h1>
+                                          <span>QuickBooks Invoices</span>
+                                          <span class="slds-page-header__title slds-truncate heading" title="TechDicer">
+                                          All
+                                          </span>                                         
+                                       </h1>                                       
+                                    </div>
+                                 </div>
+                              </lightning-layout-item>
+                              <lightning-layout-item size="3" flexibility="auto"></lightning-layout-item>
+                              <lightning-layout-item size="3" flexibility="auto"></lightning-layout-item>
+                              <lightning-layout-item size="2" flexibility="auto">
+                                 <div
+                                    class="slds-col slds-small-size_11-of-11 slds-medium-size_11-of-11 slds-large-size_11-of-11 slds-scrollable--x">
+                                    <lightning-layout-item flexibility="auto" padding="around-small">
+                                       <lightning-input
+                                          class= {inputClass}
+                                          type="search"
+                                          variant="label-hidden"
+                                          label=""
+                                          placeholder={searchPlaceholder}
+                                          value={searchKey}  
+                                          autocomplete="false"
+                                          onchange={handleSearch}
+                                          min-length ="3"
+                                          message-when-too-short="Please enter more than 2 characters"
+                                          >
+                                       </lightning-input>
+                                    </lightning-layout-item>
+                                 </div>
+                              </lightning-layout-item>
+                              <lightning-layout-item size="1" flexibility="auto" padding="around-small" style="padding-top: 1.2%;">
+                                 <span style="text-align:right">
+                                    <button class="slds-button slds-button_icon slds-button_icon-border refresh-icon" title="Refresh" onclick={handleRefresh}>
+                                       <svg class="slds-button__icon" aria-hidden="true">
+                                          <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.28.0#refresh"></use>
+                                       </svg>
+                                    </button>
+                                 </span>
+                              </lightning-layout-item>
+ 
+                               <!-- <lightning-layout-item size="3" flexibility="auto">
+                                  
+                                     <lightning-combobox
+                                     name="SortBy"
+                                     label="Sort By"
+                                     value={sortByValue}
+                                     options={sortByOptions}
+                                     onchange={handleValues}
+                                     style="font-weight: 700;"
+                                     >
+                                     </lightning-combobox>
+                               </lightning-layout-item>
+ 
+                               <lightning-layout-item size="1" flexibility="auto">
+                                     <lightning-combobox
+                                     name="SortOrder"
+                                     label="Sort Order"
+                                     value={sortOrderValue}
+                                     options={sortOrderOptions}
+                                     onchange={handleValues}
+                                     style="font-weight: 700;"
+                                     >
+                                     </lightning-combobox>
+                               </lightning-layout-item>
+                               -->
+ 
+                             
+                           </lightning-layout>                           
+                        </div>
+                     </div>
+                  </div>
+               </div>
+         <div>
+           
+         </div>
+      
+          <lightning-layout>
+             <lightning-layout-item size="12" flexibility="auto">
+                <div
+                   class="slds-col slds-small-size_11-of-11 slds-medium-size_11-of-11 slds-large-size_11-of-11 slds-scrollable--x">
+                   <span class="custom-box">
+                      
+      <table class="slds-table slds-table_cell-buffe table slds-scrollable ownTable"
+      style="height: 60vh;" >
+      <thead style="position: sticky;z-index: 1;top: 0;">
+          <tr class="slds-line-height_reset">
+              <th>Invoice Name</th>
+              <th>Status Flag</th>
+              <th>Status</th> 
+              <th width="15%">Account</th>
+              <th>Agency</th>
+              <th>Due Date</th>  
+              <th>Invoice Date</th>  
+              <th>Amount Overdue</th>
+              <th>Amount Due</th>  
+              <th>Amount Received</th> 
+              <th>Total</th>                     
+          </tr>
+      </thead>
+      <tbody>
+                           
+                  <tr
+                    class="slds-hint-parent"
+                    for:each={records} for:item="rec" key={index}
+                    style="cursor: pointer; border-bottom: 1px solid lightgray;"
+                  >
+                  <th class="slds-cell-wrap" title={rec.Name}>
+                     <a  onclick={handleNavigate} tabindex="-1" data-id={rec.Id}>{rec.Name}</a>
+                  </th> 
+                  <th class="slds-cell-wrap" title={rec.Name}>
+                     <div class="img-class">
+                        <img src={rec.Flag} class="img-class">
+                      </div>
+                  </th>
+                  <th class="slds-cell-wrap">{rec.Status}</th>
+                  <th class="slds-cell-wrap">                                        
+                   <a href={rec.urlaccount} target="_blank" data-id={rec.Account}> {rec.AccountName}</a>              
+                  </th>
+                  <th class="slds-cell-wrap">                                        
+                    {rec.AgencyName}    
+                  </th>
+                  
+                  <th class="slds-cell-wrap">{rec.DueDate}</th>
+                  <th class="slds-cell-wrap">{rec.InvoiceDate}</th>
+                  <th class="slds-cell-wrap">
+                  <lightning-formatted-number readonly="" value={rec.AmtOverDue} title={rec.AmtOverDue} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                  </th>
+                  <th class="slds-cell-wrap">
+                  <lightning-formatted-number readonly="" value={rec.AmtDue} title={rec.AmtDue} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                  </th>
+                  <th class="slds-cell-wrap"> 
+                  <lightning-formatted-number readonly="" value={rec.AmtReceived} title={rec.AmtReceived} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                   </th>
+                   <th class="slds-cell-wrap">
+                  <lightning-formatted-number readonly="" value={rec.AmtTotal} title={rec.AmtTotal} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                  </th>
+             
+              </tr>
+              <template if:false={dataExists}>
+               <tr>
+                   <td colspan="6" style="text-align: center;">
+                       No Record Found
+                   </td>
+               </tr>
+               
+           </template>                 
+ 
+          
+      </tbody>
+      </table>
+ 
+      <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="padding: 0.5em;margin-top:3%">
+        
+          
+         <div class="slds-align_absolute-left">
+             <lightning-button disabled={disablePreviousButtons} icon-name="utility:chevronleft" label="Previous" alternative-text="Previous" onclick={handleNavigation}></lightning-button>
+             &nbsp;
+             <span class="slds-badge">Showing {pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+             &nbsp;
+             <lightning-button disabled={disableNextButtons} icon-name="utility:chevronright" label="Next" alternative-text="Next" onclick={handleNavigation} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+         </div>
+ 
+         <!--TOTAL RECORDS-->
+         <div class="slds-clearfix">
+             <div class="slds-float_right">
+                 <span class="slds-badge"> Total Records: {totalRecords}</span>
+             </div>
+         </div>
+     </div>
+ 
+                   </span>
+                </div>
+             </lightning-layout-item>
+          </lightning-layout>
+       </div>
+  
+    <!-- </lightning-card> -->
+ </template>

@@ -1,0 +1,11 @@
+NEW BOLD LEAD HAS BEEN RECEIVED BY SALESFORCE.
+
+{!Lead.Company}
+
+{!Lead.Type_of_Risk__c}
+
+{!Lead.Physical_City__c}
+
+{!Lead.Number_of_Units__c}
+
+Premium Indication:  {!Lead.Indicated_Premium__c}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>QB_WH_verifier_token</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QB_WH_verifier token</shortDescription>
+        <value>2ca85b2f-7115-48c4-9d45-b9408843fcd4</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,101 @@
+<template>
+    <div class="main-container">
+        <c-custom-toast-notification
+        timeout={timeout}
+        sticky={sticky}
+        ></c-custom-toast-notification>
+        <div class="slds-page-header" role="banner">
+            <div class="slds-media slds-media_center">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-user">
+                        <svg aria-hidden="true" class="slds-icon">
+                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#moneybag"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <p class="slds-page-header__title">{_titleText}</p>
+                    <p class="slds-text-body_small">{_smallText} </p>
+                </div>
+            </div>
+        </div> 
+        <lightning-card class="indicator-card slds-p_medium">
+            <lightning-progress-indicator current-step={currentStep} type="path" variant="base">
+                <!-- <lightning-progress-step label="Step 1" value="1" onclick={handleOnStepClick}></lightning-progress-step> -->
+                <lightning-progress-step label="Chosen Account" data-value="1"></lightning-progress-step>
+                <lightning-progress-step label="Select QuickBooks Customer" data-value={step2} value={step2} onclick={handleOnStepClick}></lightning-progress-step>
+                <template if:true={handleShowPath}>
+                    <lightning-progress-step label="Create New Customer" data-value={step3} value={step3} onclick={handleOnStepClick}></lightning-progress-step>
+                </template> 
+                <template if:true={handleShowEditPath}>
+                    <lightning-progress-step label="Edit Quickbook Customer" data-value={step3} value={step3} onclick={handleOnStepClick}></lightning-progress-step>
+                </template>               
+                <lightning-progress-step label="Create QuickBooks Invoice" data-value={step4} value={step4} onclick={handleOnStepClick}></lightning-progress-step>
+
+            </lightning-progress-indicator>
+        </lightning-card>
+    
+        <template if:true={isStepOne}>
+            <div>           
+            </div>
+        </template>
+
+        <template if:true={isStepTwo}>        
+              <c-path-with-information-page-C-M-P  need-to-show={handleShowPath} cus-id={applicantId} cus-name={applicantName} onlineitemvalue={handleNewCustButtonValues} oniditemvalue={handleIdNav}></c-path-with-information-page-C-M-P>
+              <lightning-card>
+              <div class="wrapper slds-p-horizontal_medium">
+              <template if:true={isEnableNext}>
+                <button class="slds-button slds-button_brand" onclick={handleNext}>Next </button>    
+              </template>
+             </div>
+             </lightning-card>
+         </template>
+    
+          <!--Edit Customer-->   
+           
+        <template if:true={handleShowEditPath}>
+            <template if:true={isStepThree}>
+                <div>
+                    <c-edit-customer-c-m-p edit-id={editId} oneditinvoicetoupdate={handleditInv} > </c-edit-customer-c-m-p>
+                </div>
+            </template>
+            <template if:true={isStepFour}>
+                <div>
+                    <c-create-invoice-C-M-P record-id={paramValue} company-id={companyId} billing-address={billingAddress} commission={commision} indicated-perimum={indiactedPerimum} discount-value={discountValue}></c-create-invoice-C-M-P>
+                </div>
+            </template>
+        </template>    
+          
+          <!--Edit Customer Ends-->       
+
+        <template if:true={handleShowPath}>
+            <template if:true={isStepThree}>
+                <div>
+                <c-create-new-customer-c-m-p record-id={paramValue} onresultvalue={handlenewInv} ></c-create-new-customer-c-m-p>
+                </div>
+            </template>
+            <template if:true={isStepFour}>
+                <div>
+                    <c-create-invoice-C-M-P record-id={paramValue} company-id={companyId} billing-address={billingAddress} commission={commision} indicated-perimum={indiactedPerimum} discount-value={discountValue}></c-create-invoice-C-M-P>
+                </div>
+            </template>
+        </template>
+
+
+    
+        <template if:false={handleShowPath}>
+            <template if:false={handleShowEditPath}>
+                <template if:true={isStepThree}>
+                    <c-create-invoice-C-M-P record-id={paramValue} company-id={companyId}  billing-address={billingAddress} commission={commision} indicated-perimum={indiactedPerimum} discount-value={discountValue}></c-create-invoice-C-M-P>
+                </template> 
+            </template>            
+        </template>
+        <!-- <template if:false={handleShowEditPath}>
+            <template if:true={isStepThree}>
+                <c-create-invoice-C-M-P record-id={paramValue} company-id={companyId}  billing-address={billingAddress} commission={commision} indicated-perimum={indiactedPerimum} discount-value={discountValue}></c-create-invoice-C-M-P>
+            </template> 
+        </template>
+        -->
+  
+    </div>
+</template>

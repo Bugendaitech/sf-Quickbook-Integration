@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Status_Flag__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Red, Yellow or Green flag for QuickBooks Invoices, representing Overdue, Due, and Paid</description>
+    <externalId>false</externalId>
+    <formula>IF(
+            CONTAINS($User.UIThemeDisplayed, &apos;Theme4&apos;),
+          
+            IF( 
+               ISBLANK( breadwinner_qbo__Internal_Status__c ),
+               IF( OR(breadwinner_qbo__Status__c = &apos;Paid&apos;, breadwinner_qbo__Status__c = &apos;Closed&apos;),
+              IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/green-flag.png&quot;, &quot;Paid&quot;),
+              IF( breadwinner_qbo__Type__c = &apos;Credit Memo&apos;,
+                 IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/yflag.png&quot;, &quot;Unapplied&quot;),
+                 IF( breadwinner_qbo__Amount_Overdue__c &gt; 0,
+                   IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/red-flag.png&quot;, &quot;Overdue&quot;) ,
+                   IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/yflag.png&quot;, &quot;Open&quot; ) 
+                 )
+              )
+               ),
+               IF(OR(breadwinner_qbo__Internal_Status__c = &apos;Pending&apos;,breadwinner_qbo__Internal_Status__c = &apos;Open/Partial&apos;), IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/yflag.png&quot;,&quot;Open&quot;),
+               IF(OR(breadwinner_qbo__Internal_Status__c = &apos;Invoiced In Full&apos;,breadwinner_qbo__Internal_Status__c = &apos;Closed&apos;),IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/green-flag.png&quot;, &quot;Paid&quot;),IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/X.png&quot;, &quot;X&quot;)))
+            ),
+          
+            IF( 
+               ISBLANK( breadwinner_qbo__Internal_Status__c ),
+               IF( OR(breadwinner_qbo__Status__c = &apos;Paid&apos;, breadwinner_qbo__Status__c = &apos;Closed&apos;),
+              IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;Paid&quot;, 16, 16),
+              IF( breadwinner_qbo__Type__c = &apos;Credit Memo&apos;,
+                 IMAGE(&quot;/img/samples/flag_yellow.gif&quot;, &quot;Unapplied&quot;, 16, 16),
+                 IF( breadwinner_qbo__Amount_Overdue__c &gt; 0,
+                   IMAGE(&quot;/img/samples/flag_red.gif&quot;, &quot;Overdue&quot;, 16, 16) ,
+                   IMAGE(&quot;/img/samples/flag_yellow.gif&quot;, &quot;Open&quot;, 16, 16) 
+                 )
+              )
+                ),
+                IF(OR(breadwinner_qbo__Internal_Status__c = &apos;Pending&apos;,breadwinner_qbo__Internal_Status__c = &apos;Open/Partial&apos;), IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/yflag.png&quot;, &quot;Open&quot; , 16, 16),
+               IF(OR(breadwinner_qbo__Internal_Status__c = &apos;Invoiced In Full&apos;,breadwinner_qbo__Internal_Status__c = &apos;Closed&apos;),IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;Paid&quot;, 16, 16),IMAGE(&quot;https://s3.amazonaws.com/cdn.breadwinner/X.png&quot;, &quot;X&quot;, 16, 16)))
+            )
+          )</formula>
+    <label>Status Flag</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

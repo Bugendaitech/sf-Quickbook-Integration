@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>validation_for_parent_agency</fullName>
+    <active>true</active>
+    <errorConditionFormula>$RecordType.Name = &apos;Agencies&apos; &amp;&amp; Number_of_Units__c   &lt;&gt; 1</errorConditionFormula>
+    <errorDisplayField>Number_of_Units__c</errorDisplayField>
+    <errorMessage>No. of units must be equal to 1</errorMessage>
+</ValidationRule>

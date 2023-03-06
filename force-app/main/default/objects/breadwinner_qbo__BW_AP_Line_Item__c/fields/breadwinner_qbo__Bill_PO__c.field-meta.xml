@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Bill_PO__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Bill / PO</label>
+    <referenceTo>breadwinner_qbo__BW_AP_Bill_PO__c</referenceTo>
+    <relationshipLabel>Bill &amp; PO Line Items (Bill / PO)</relationshipLabel>
+    <relationshipName>Bill_PO_Line_Items</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

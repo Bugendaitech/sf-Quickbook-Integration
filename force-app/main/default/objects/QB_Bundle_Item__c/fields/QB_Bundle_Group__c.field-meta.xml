@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QB_Bundle_Group__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Bundle/Group</label>
+    <referenceTo>QB_Item__c</referenceTo>
+    <relationshipLabel>QB Bundle Items (Bundle/Group)</relationshipLabel>
+    <relationshipName>QB_Bundle_Items1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

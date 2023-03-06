@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllAccounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Physical_Address_2__c</columns>
+    <columns>Physical_City__c</columns>
+    <columns>Physical_State__c</columns>
+    <columns>Agent_to_Bill__c</columns>
+    <columns>Agency_Name__c</columns>
+    <columns>Agency_Phone__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STREET</columns>
+    <columns>Policy_Type__c</columns>
+    <columns>Indicated_Premium__c</columns>
+    <columns>breadwinner_qbo__BW_Account_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Number_of_Units__c</field>
+        <operation>notEqual</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Duplicate_Account__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Number_of_Units__c</field>
+        <operation>notEqual</operation>
+        <value>-1</value>
+    </filters>
+    <label>All Applicants/Insureds</label>
+</ListView>

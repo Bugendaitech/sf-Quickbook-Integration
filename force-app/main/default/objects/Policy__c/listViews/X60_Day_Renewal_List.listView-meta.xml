@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X60_Day_Renewal_List</fullName>
+    <columns>NAME</columns>
+    <columns>Insured__c</columns>
+    <columns>PPE2__c</columns>
+    <columns>Agent__c</columns>
+    <columns>Days_Left__c</columns>
+    <columns>Annual_Premium2__c</columns>
+    <columns>Renewed__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Days_Left__c</field>
+        <operation>lessThan</operation>
+        <value>60</value>
+    </filters>
+    <filters>
+        <field>Days_Left__c</field>
+        <operation>greaterThan</operation>
+        <value>-90</value>
+    </filters>
+    <filters>
+        <field>Renewed__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Lapse__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>60 Day Renewal List</label>
+</ListView>

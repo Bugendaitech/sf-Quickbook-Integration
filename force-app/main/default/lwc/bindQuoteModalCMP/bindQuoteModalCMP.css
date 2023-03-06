@@ -1,0 +1,9 @@
+.wrapper{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.selectbox{
+    width: 50%;
+    margin: 25px 0px
+}

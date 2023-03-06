@@ -1,0 +1,42 @@
+.heading{
+    font-size: 20pt;
+    font-weight: 700;
+}
+.tile-class{ 
+    border-radius: 2px;
+    margin: 25px 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+
+}
+.tile-class:hover{
+    background: #f8f8f8; 
+}
+.job-name{
+    cursor: pointer;
+    text-transform: capitalize;
+    color: rgb(1, 68, 134);
+}
+.main-div{
+    background: white;
+    padding: 2px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+.table { 
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.titleDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+td{
+    text-transform: capitalize;
+}
+
+.search-bar{
+    margin-bottom:10px;
+}

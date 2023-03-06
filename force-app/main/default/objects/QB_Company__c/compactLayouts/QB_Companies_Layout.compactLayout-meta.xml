@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QB_Companies_Layout</fullName>
+    <fields>QB_Company_Name__c</fields>
+    <fields>QB_Salesforce_Account__c</fields>
+    <fields>QB_Display_Name__c</fields>
+    <fields>QB_Given_First_Name__c</fields>
+    <fields>QB_Family_Last_Name__c</fields>
+    <fields>QB_Email__c</fields>
+    <fields>QB_Status__c</fields>
+    <fields>QB_Phone_Number__c</fields>
+    <fields>QB_Mobile_Number__c</fields>
+    <fields>QB_Website__c</fields>
+    <label>QB Companies Layout</label>
+</CompactLayout>

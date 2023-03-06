@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QB_Bill_Payment__c</fullName>
+    <externalId>false</externalId>
+    <label>QB_Bill Payment</label>
+    <referenceTo>QB_Bill_Payment__c</referenceTo>
+    <relationshipLabel>QB Bill Payment Transaction Number</relationshipLabel>
+    <relationshipName>QB_Bill_Payment_Transaction_Number</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

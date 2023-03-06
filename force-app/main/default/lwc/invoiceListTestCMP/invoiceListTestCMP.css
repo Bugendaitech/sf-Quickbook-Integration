@@ -1,0 +1,25 @@
+.red {
+    background-image: url("/resource/1671476878000/StatusImages/StatusImages/red-flag.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+}
+
+.header-style{
+    --slds-c-card-header-spacing-block-start : none;
+    --sds-c-card-header-spacing-block-start  : none;
+    --sds-c-card-header-spacing-block        : none;
+    --lwc-varSpacingVerticalSmall            : none;
+}
+
+.ownTable thead tr th{
+    padding: 12px 5px;
+  }
+  .table-container{
+    padding: 5px 10px;
+  }
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}

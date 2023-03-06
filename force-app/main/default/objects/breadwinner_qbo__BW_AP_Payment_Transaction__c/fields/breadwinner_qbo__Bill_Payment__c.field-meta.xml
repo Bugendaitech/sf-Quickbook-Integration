@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Bill_Payment__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Bill Payment</label>
+    <referenceTo>breadwinner_qbo__BW_AP_Bill_Payment__c</referenceTo>
+    <relationshipLabel>Bill Payment Transactions</relationshipLabel>
+    <relationshipName>Bill_Payment_Transactions</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,750 @@
+<apex:page controller="PLPolicyCtrl" renderAs="pdf" showHeader="false" cache="true" readOnly="true">
+    <html>
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>PL POLICY PDF</title>
+            
+            <style type="text/css">
+                @font-face {
+                font-family: "Vladimir Script";
+                src: url('{!URLFOR($Resource.VLADIMIR, 'VLADIMIR.ttf')}');
+                url("{!URLFOR($Resource.VLADIMIR, 'VLADIMIR.ttf')}") format('ttf');  
+                }
+                .myText {
+                font-family: 'Vladimir Script';
+                }
+                *{margin: 0; padding: 0;}
+                ​
+                p{margin-top: 0; padding-top : 0; font-size: 12px;}
+                ​
+                th, td{padding: 8px;}
+                ol.c {list-style-type: upper-roman;} 
+            </style>
+        </head>
+        <body>
+            <apex:stylesheet value="{!URLFOR($Resource.style, 'style.css')}" />
+              <div class="" style="max-width: 800px; margin:auto; width: 100%; background: #fff">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="padding:0">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="text-align:left;">
+                                                    <table style="width:70%">
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <p style= "font-size:9pt;">READ YOUR POLICY</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;width:20px;margin-top: 0px;">DATE</p></td>
+                                                            <td>
+                                                                <p  style="font-family:Arial; font-size:8pt; color:#1d1c1d; background-color:#f8f8f8;text-align:left;margin-top: 0px;margin-right:60%">{!policyData.CreatedDate__c}</p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;margin-top: 0px;">POLICY NUMBER</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: 0px;">{!Invoice.Policy__c}</p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="margin-left: 4px;font-size:10pt;margin-top: 0px;margin-bottom: 0px;">Prior Policy Number</p></td>
+                                                            <td><p style="font-size:10pt;margin-top: 0px;margin-top: 0px;margin-bottom: 0px;text-align:left">{!Invoice.Policy__c}</p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="text-align:right;padding-top:0px; font-size:12px">
+                                                    <apex:image url="{!$Resource.BoldLegalLogo}" width="150" height="60"/>
+                                                    <p style="margin:1px">2385 N.W. Executive Center Drive</p>
+                                                    <p style="margin:1px"> Suite 100</p>
+                                                    <p style="margin:1px">Boca Raton, FL 33431</p>
+                                                    <p style="margin:1px">(561)988-1600</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0;">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="text-align:left;">
+                                                    <table style="width:80%;margin-top:3%">
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;padding-bottom:0px">POLICY PERIOD </p>
+                                                                <table style="width: 100%; max-width: 450px;padding-left: 50px;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td style="width: 40%;"><p style="margin-top: 0px;margin-bottom: -80px;font-size:9pt;line-height:10.3pt">INCEPTION DATE</p>
+                                                                            </td>
+                                                                            <td><p style="margin-bottom: 0px;font-size:9pt;margin-left:0px">{!invoiceInceptionDate}</p></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td style="width: 40%;"><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">EXPIRATION DATE</p></td>
+                                                                            <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;margin-left:0px">{!invoiceDueDate}</p></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="3">
+                                                                                <small style="margin-left: 40px;font-family:Calibri; font-size:8.5pt">12:01 a.m. at the mailing address of the insured </small>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td><p style="line-height: 16px;font-size:9pt; color:#252324">THIS POLICY ONLY PROVIDES DEFENSE COVERAGE AS SCHEDULED IN THE POLICY FORM AND ENDORSEMENTS. THERE IS NO COVERAGE FOR ANY OTHER EXPENSE, INDEMNIFICATION SETTLEMENT OR JUDGEMENT. </p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td style="width: 80px;font-size:9pt;"><p>INSURED</p></td>
+                                                            <td><p style="font-size:9pt; text-transform: uppercase;">{!invoice.Account__r.Name}</p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td>
+                                                                <table style="width:100%; max-width:300px;">
+                                                                    <tr>
+                                                                        <td><p style="margin-bottom: 0px;font-size:9pt;">LOCATION</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;font-size:9pt;">{!invoice.Account__r.BillingStreet}</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">ADDRESS</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">{!invoice.Account__r.BillingCity}</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">{!invoice.Account__r.BillingState} {!invoice.Account__r.BillingPostalCode}</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">&nbsp;</p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>
+                                                                <table style="width:100%; max-width:300px;margin-top:2%;">
+                                                                    <tr>
+                                                                        <td><p style="margin-bottom: 0px;margin-top:0px;font-size:9pt;">MAILING</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">{!invoice.Account__r.Mailing_Address__c}</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">ADDRESS</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">{!invoice.Account__r.Mailing_Address2__c}</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">{!invoice.Account__r.Mailing_City__c}</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">{!invoice.Account__r.Mailing_State__c} {!invoice.Account__r.Mailing_Zip_Code__c}</p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 550px;">
+                                                        <tr>
+                                                            <td><p style="font-size:9pt">LIMITS OF LIABILITY</p></td>
+                                                            <td><p style="font-size:9pt">Duty to Defend all as per policy form </p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">DEDUCTIBLE</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">NONE</p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">PREMIUM</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">$ {!Invoice.Total__c} </p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <!---here --->
+                                             <tr>
+                                                <td  >
+                                                    <table style="width:100%; max-width: 300px">
+                                                        <tr>
+                                                            <td colspan="2" style="padding-bottom:0;font-size:9pt;padding-left: 4%;"><p>POLICY FORMS and ENDORSEMENTS </p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%;"></td>
+                                                            <td style="padding-top:0px;"><small style="font-size:9pt; color:#1f3763">BL-POL 03-21 <br/> Signed Application</small></td>
+                                                        </tr>
+                                                      
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                           
+                                                
+                                                <tr>
+                                                    <td colspan="1"><table style="width:100%;">
+                                                        <tbody><tr>
+                                                            <td style="width:10%"><p style="padding-right: 8px;font-size:9pt;margin-top: -10px;">AGENT</p></td>
+                                                            <td style="width:40%;">
+                                                                <p style="margin-top: -10px;font-size:8pt;">{!policyData.Insured__r.Agency__c}</p>
+                                                            </td>
+                                                            <td style="width:50%"> <p style="float:left;font-size:8pt;padding-top:0px">{!policyData.Insured__r.Agent_To_Bill__r.Account.Physical_Address_2__c}<br/>
+                                                               {!policyData.Insured__r.Agent_To_Bill__r.Account.Physical_City__c}<br/>
+                                                                {!policyData.Insured__r.Agent_To_Bill__r.Account.Physical_State__c} {!policyData.Insured__r.Agent_To_Bill__r.Account.Physical_Zip_Code__c}</p></td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                            </tr> 
+                                            <!---here --->
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%;">
+                                                        <tr>
+                                                            <td width="12%"></td>
+                                                            <td ><small style="max-width: 800px; display:block; margin: 0 0 0 auto;font-family:Calibri; font-size:8.5pt">This DECLARATION PAGE, together with the APPLICATION, The POLICY FORM,and <br/> all endorsements thereto, shall constitute the contract between the "Insurer" and the "Insured". <br/>
+                                                                This Policy is valid only if signed below by a duly authorized representative of the "Insurer"</small></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+</tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                 <!--  <p style="margin-top:20.15pt; margin-left:7.45pt; margin-bottom:0pt; text-align:justify; line-height:16.35pt"><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">Countersigned</span><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d; -aw-import:spaces">&nbsp; </span><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">By</span><span  style="font-family: Vladimir Script;font-size:13pt; letter-spacing:45.95pt; color:#1e1d1d"> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:'Vladimir Script !important'; font-size:13pt; color:#1e1d1d">Steve</span><span class="myText" style="font-family:'Vladimir Script !important'; font-size:13.5pt; color:#1e1d1d"> Lubell</span></p>-->
+                                                    <p style="margin-top:20.15pt; margin-left:7.45pt; margin-bottom:0pt; text-align:justify; line-height:16.35pt"><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">Countersigned</span><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d; -aw-import:spaces">&nbsp; </span><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">By</span><span  style="font-family: Vladimir Script;font-size:13pt; letter-spacing:45.95pt; color:#1e1d1d"> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <apex:image url="{!$Resource.PLPolicySign}" style="margin-top:-5px" width="100" height="20"/></p>
+                                                    <p style="margin-top:0pt; margin-left:7.45pt; margin-bottom:0pt; text-align:justify; line-height:8.35pt"><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">IN WITNESS WHEREOF, the Company has caused this policy to be signed by its authorized officers.</span></p>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td width="50%">
+                                                                <p style="color: #6868b1;"><strong><em>Policy Form included</em></strong></p>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>                  
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        
+                <div style="padding-top : 8%"> 
+                    <table style="width:100%">
+                        <tr>
+                            <td style="padding-top:0px; font-size:16px">                                           
+                                <apex:image url="{!$Resource.BoldLegalLogo}" width="150" height="60"/>
+                                <p style="margin:1px">2385 N.W. Executive Center Drive</p>
+                                <p style="margin:1px"> Suite 100</p>
+                                <p style="margin:1px">Boca Raton, FL 33431</p>
+                                <p style="margin:1px">(561)988-1600</p>
+                            </td> 
+                        </tr>
+                    </table>
+                </div>
+                
+                <div style="text-align:center;font-size:2rem;padding-bottom:3%">
+                    
+                    <p>
+                        <h2>Legal Expense Insurance Policy Coverage Form</h2>
+                    <h2>Table of Contents</h2>
+                </p>   
+                
+            </div>
+            
+        
+       <!-- <div style="text-align:center;padding-left:2%;padding-right:2%">-->
+          <ol style="margin:0pt; padding-left:0pt;list-style-type: upper-roman;list-style-position: inside" class="c" >
+               <li style="margin-top:12.45pt; margin-left:15.2pt; text-align:justify; line-height:13.25pt; padding-left:17.35pt">
+                   <span>Insuring Agreement: ...............................................................................................................2</span>
+               </li>
+               <li style="margin-top:12.45pt; margin-left:19.19pt; text-align:justify; line-height:13.25pt; padding-left:12.36pt">
+                   <span>Definitions:..............................................................................................................................2</span>
+               </li>
+               <li style="margin-top:12.55pt; margin-left:23.19pt; text-align:justify; line-height:13.25pt; padding-left:8.36pt">
+                   <span>"Legal Services" and Benefits:...............................................................................................3</span>
+               </li>
+               <li style="margin-top:12.4pt; margin-left:23.42pt; text-align:justify; line-height:13.25pt; padding-left:8.13pt">
+                   <span>Operation and Administration of Plan:..................................................................................4</span>
+               </li>
+               <li style="margin-top:12.45pt; margin-left:19.42pt; text-align:justify; line-height:13.25pt; padding-left:14.13pt">
+                   <span>Limitations and Exclusions:...................................................................................................5</span>
+               </li>
+               <li style="margin-top:12.4pt; margin-left:23.42pt; text-align:justify; line-height:13.25pt; padding-left:8.13pt">
+                   <span>Duties of </span><span style="font-size:11.5pt">"Insured":</span><span> ...............................................................................................................6</span></li>
+               <li style="margin-top:6.4pt; margin-left:27.41pt; text-align:justify; line-height:25.65pt; padding-left:4.4pt">
+                   <span>Cancellation:.........................................................................................................................7</span></li>
+               <li style="margin-top:0.05pt; margin-left:27.41pt; text-align:justify; line-height:25.65pt; padding-left:4.14pt">   <span style="letter-spacing:4.14pt"> </span>
+                   <span>General Provisions ..............................................................................................................8</span></li>
+               <li style="margin-top:6.4pt; margin-left:22.85pt; text-align:justify; line-height:13.25pt; padding-left:13.75pt">
+                   <span>Notice....................................................................................................................................9</span></li>
+               <li style="margin-top:12.55pt; margin-left:18.86pt; text-align:justify; line-height:13.25pt; padding-left:17.74pt">
+                   <span>Severability:...........................................................................................................................9</span></li>
+               <li style="margin-top:12.4pt; margin-left:22.85pt; text-align:justify; line-height:13.25pt; padding-left:13.75pt">
+                   <span>Amendments: .......................................................................................................................9</span></li>
+               <li style="margin-top:8.4pt; margin-left:26.85pt; line-height:25.65pt; padding-left:8.75pt">
+                   <span>Jurisdiction and Venue........................................................................................................10</span>
+                   </li>
+               <li style="margin-top:0.05pt; margin-left:26.85pt; line-height:25.65pt; padding-left:8.75pt">
+                   <span>Conflict of Interest:............................................................................................................11</span></li>
+            </ol>
+       <!-- </div>-->
+        
+        <div style="padding-top:18%">
+            <table style="width:100%">
+                <tr>
+                    <td style="text-align:left"> BL POL 03 21</td>
+                    <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                    <td style="text-align:right">Page 1 of 11</td>
+                </tr>
+            </table>
+        </div>
+            <div style="padding-left:10%;padding-right:10%;">
+                
+                <h4 style="padding-top:3%;padding-bottom:3%"> I. Insuring Agreement: </h4>
+                <p>
+                    In consideration of the payment of premium and in reliance of the statements in the
+                    Application, subject to the declarations page, and pursuant to all the terms and conditions,
+                    and exclusions and limitations of this Bold Legal Defense Insurance Company, Inc.,
+                    which shall be referred to as "Bold Legal", "Policy", the "insurer" and the "insured" agree
+                    as follows:</p>
+                <p>This "policy" covers the cost of "legal services" of a "plan attorney" to defend a "claim"
+                    made against the "insured" and reported during the policy period.</p>
+                <p>This "policy" will only apply when a "claim" is made against the "insured" and the
+                    "insured's" "in force policy" denied or excluded coverage.</p>
+                <p>This "policy" does not include coverage for "legal services" of any "in force policies". It
+                    does not indemnify "you" for any money damages that "you" may have to pay as the
+                    result of a "claim" or any other damages. It does not cover any out of pocket costs in the
+                    defense of a "claim".</p>
+                <p>"Insurer" shall provide the "Insured" with a "plan attorney" and pay the "plan attorney"
+                    for "legal services" covered by this "policy". The "plan attorney" shall perform the "legal
+                    services" described herein.</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%;">
+                <h4 style="padding-top:3%;padding-bottom:3%">II. Definitions :</h4>
+                <p>a. “Claim” means a lawsuit against the “Insured(s)”; or an administrative, city, county
+                    or state government proceeding against the “Insured(s)” or a mediation proceeding
+                    against the “Insured(s)” that results from the denial of an insurance claim made
+                    against “Inforce Policy(ies)”</p>
+                <p>b. "In force Policy(ies)" means the "insured's" Commercial General Liability Policy;
+                    Directors and Officers Liability Policy; and Workers’ Compensation Policies for
+                    which the premium is/was paid and the "policies" are/were current now and at the
+                    time of loss.</p>
+                <p>c. "Insurance carrier(s)" means the "in force policies".
+                    </p>
+                <p>d. "Insured" means the legal entity or person listed as the "Insured"/Policyholder on the
+                    declarations page and its/their Directors and Officers, Managers and "Management
+                    Company".</p>
+                <p>e. "Insurer" means the company offering the legal expense coverage under the name of
+                    Bold Legal Defense Insurance Company, Inc.</p>
+                <p>f. "Legal Services" means the "insured" "plan attorney's" fees incurred as the result of a
+                    "claim" covered by this "policy".</p>
+                <div style="padding-top:2%;padding-left:none;padding-right:none;">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:left"> BL POL 03 21</td>
+                            <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                            <td style="text-align:right">Page 2 of 11</td>
+                        </tr>
+                    </table>
+                </div>
+  
+              
+                <p>g. "Management Company" means a company hired by the "insured" to manage the
+                    "insured's" property at a "scheduled location".</p>
+                <p>h. "Plan Attorney" means a licensed attorney in the state of Florida that the "insurer" has
+                    contracted with to provide the "legal services" for the "insured" under this "policy".</p>
+                <p>i. "Policy" means the agreement between the "insurer" and "insured" for "legal
+                    services".</p>
+                <p>j. "Scheduled Location" means the properties listed on the declarations page.</p>
+                <p>k. "You" or "your" in this "policy" refer to the "insured" shown in the declarations page.</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%;">
+                <h4 style="padding-top:3%;padding-bottom:3%">III. "Legal Services" and Benefits:</h4>
+                <p>a. Subject to the limitations stated in this "policy", "Bold Legal" agrees to provide
+                    "insured" with a "Plan Attorney" to defend the "insured" as the result of a "claim"
+                    where "you" are a defendant.</p>
+                <p>b. The coverage as described in paragraph a. above includes "management company"
+                    but only as below:</p>
+                <p style="padding:2%">
+                    
+                    
+                    1. The "management company" is the defendant in a lawsuit brought by a party
+                    other than the "insured"; and</p>
+                <p style="padding:2%">   2. The allegations of the lawsuit solely involve the management or mismanagement
+                    of a "scheduled location"; and</p>
+                <p style="padding:2%">    3. If the “Insured(s)” is taking action against the “Management Company” or if the
+                    “Insured(s)” is bringing any legal claims against the “Management Company” or
+                    asserting affirmative defenses against the “Management Company” then there
+                    shall be no coverage for the “Management Company” under this “Policy”;</p>
+                <p style="padding:2%">   4. See section XIII Conflict of Interest.
+                </p>
+                <p>c. "Bold Legal" only provides its "plan attorney" to defend a covered "claim" under this
+                    "policy". "Bold Legal" does not indemnify or pay any damages, which result from a
+                    "claim".</p>
+                <div style="padding-top:6%;padding-left:none;padding-right:none;">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:left"> BL POL 03 21</td>
+                            <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                            <td style="text-align:right">Page 3 of 11</td>
+                        </tr>
+                    </table>
+                </div>
+                <p>d. The insured does not have the right to select the attorney to provide a defense. "Bold
+                    Legal" has the exclusive and sole right to select the attorney to provide a defense.
+                    Nothing in this "policy" shall be construed to limit "your" right to retain, at "your"
+                    own expense, an additional attorney to advise or represent "you".</p>
+                <p>e. If a lawsuit is filed against the "Insured" and "Bold Legal" provides a "plan attorney"
+                    to defend "claims", the following costs are the responsibility of the "insurer":</p>
+                <p style="padding:2%">
+                    1. Attorney Fees;</p>
+                <p style="padding:2%">  2. Paralegal costs;</p>
+                <p style="padding:2%"> 3. Copies and Faxes;</p>
+                <p style="padding:2%">  4. Legal Research Costs;</p>
+                <p style="padding:2%">  5. Travel expenses anywhere in the State of Florida;</p>
+                <p style="padding:2%">  6. Telephone and long distance costs;</p>
+                <p style="padding:2%">  7. Data Processing charges; and</p>
+                <p style="padding:2%"> 8. U.S. 1st Class Mail Postage.</p>
+                
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%;">
+                <h4 style="padding-top:3%;padding-bottom:3%">IV. Operation and Administration of Plan : </h4>
+                <p>"Bold Legal" shall have the sole and exclusive authority to select a "plan attorney" to
+                    represent "you". The "plan attorney" selected shall be an attorney licensed to practice
+                    law in the state of Florida. The "plan attorney" selected shall be a Florida licensed
+                    attorney who is in good standing with the Florida Bar. Upon notification of any covered
+                    "claim", as specified in this "policy", "Bold Legal" will notify its "plan attorney" and 
+                    "plan attorney" will contact "insured" within five (5) business days of receiving the
+                    "claim".</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">V. Limitations and Exclusions:</h4>
+                <div style="padding-top:2%;padding-left:none;padding-right:none;">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:left"> BL POL 03 21</td>
+                            <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                            <td style="text-align:right">Page 4 of 11</td>
+                        </tr>
+                    </table>
+                </div>
+                <p style="padding:2%">a. The "insured" is responsible for the out of pocket costs related to the defense of a
+                    "claim". Such out of pocket costs are as follows and need to be reimbursed within
+                    thirty (30) days of notification to the insured:</p>
+                <p style="padding:2%">
+                    1. Deposition or transcript costs; </p>
+                <p style="padding:2%">  2. Court Reporter fees; </p>
+                <p style="padding:2%">   3. Expert witness fees; </p>
+                <p style="padding:2%">  4. Travel expenses if the "plan attorney" is required to travel outside of the State of
+                    Florida: </p>
+                <p style="padding:2%">  5. Trial exhibits and witness fees; </p>
+                <p style="padding:2%">  6. Overnight mail; </p>
+                <p style="padding:2%"> 7. Surveillance Charges; </p>
+                <p style="padding:2%"> 8. Investigator fees; </p>
+                <p style="padding:2%"> 9. Service of process fees; </p>
+                <p style="padding:2%" > 10. Court fees or charges; </p>
+                <p style="padding:2%"> 11. Messenger fees.
+                </p>
+                
+                <p>b. The following claims are excluded from the "policy" coverage herein:</p>
+                <p style="padding:2%">
+                    1. Any existing "claims” or lawsuits that occurred before the effective date of this
+                    "policy".</p>
+                
+                <div style="padding-left:none;padding-right:none;padding-top:2%">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:left"> BL POL 03 21</td>
+                            <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                            <td style="text-align:right">Page 5 of 11</td>
+                        </tr>
+                    </table>
+                </div>
+                <p style="padding:2%">  2. Any "claim" against the "insured" which is brought or filed in a Court outside the
+                    State of Florida.</p>
+                <p style="padding:2%"> 3. Any “claim” where the “insured” failed to provide "Bold Legal" with notification
+                    of a "claim" or lawsuit within time stated in this "policy".</p>
+                <p style="padding:2%">4. Any appeals, Appellate proceedings, cost or expense.</p>
+                <p style="padding:2%"> 5. Any class action "claim" or lawsuit.</p>
+                <p style="padding:2%"> 6. Any “claim” or lawsuit filed in Criminal Court.</p>
+                <p style="padding:2%">7. Any "claim" or lawsuit filed in Federal Court except for those "claims" involving
+                    service animals, emotional support pets, discrimination in housing, or American
+                    Disability Act compliance.</p>
+                <p style="padding:2%"> 8. Any "claims", lawsuits, acts or allegations that occurred after the expiration date
+                    of the "policy".</p>
+                <p style="padding:2%"> 9. If the "insured" is the plaintiff in any lawsuit, there shall be no coverage
+                    regardless of any individual or entity listed as the defendant. </p>
+                <p style="padding:2%"> 10. All post Judgment Proceedings.</p>
+                <p style="padding:2%"> 11. "Claims" involving collections of debts or the Fair Debt Collections Act. </p>
+                <p style="padding:2%"> 12. Any "claim" or lawsuit in relation to a property or unit other than a "scheduled
+                    location".</p>
+                <p style="padding:2%"> 13. Any "claim" or lawsuit arising out of the obligation of the "insured" under a
+                    disability benefits, ERISA or unemployment compensation law or any similar
+                    law.</p>
+                <p style="padding:2%"> 14. If a "claim" is filed against the “insured” and does not include the named
+                    "insured" on the declarations page, no coverage will be provided by this "policy".
+                </p>
+            </div>
+            
+                <div style="padding-left:10%;padding-right:10%">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:left"> BL POL 03 21</td>
+                            <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                            <td style="text-align:right">Page 6 of 11</td>
+                        </tr>
+                    </table>
+                </div>
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">VII. Cancellation:</h4>
+                <p>a. An "insured" may cancel the "policy" by providing the "insurer" with written notice
+                    of the date cancellation is to take effect.</p>
+                <p>b. The "insurer" may cancel the "policy" if the "insured" is provided with forty five (45)
+                    days written notice of cancellation with reasons for the cancellation except when:</p>
+              
+                    <p style="padding:2%">1. Cancellation is for non-payment of premium, then at least ten (10) days written
+                        notice must he provided with the reason of cancellation;</p>
+                    <p style="padding:2%"> 2. Cancellation occurs during the first ninety (90) days and the insurance is
+                        cancelled for reasons other than non-payment, "insurer" shall provide at least
+                        twenty (20) days written notice of cancellation with reason of cancellation; or</p>
+                    <p style="padding:2%"> 3. Cancellation occurs after the "policy" has been in effect for ninety (90) days, then
+                        no "policy" shall be cancelled by "insurer" unless there has been a material
+                        misstatement, a nonpayment of premium, failure to comply with underwriting
+                        requirements, or a substantial change in risk covered by the "policy".
+                        
+                        If the "insurer" fails to provide forty five (45)-day or twenty (20)-day written notice, the
+                        coverage shall remain in effect until forty five (45) days after the notice is given or until
+                        the effective date of replacement coverage is obtained, whichever occurs first</p>
+               
+                <p>c. In the event that the "insured" terminates their "policy" for any reason, the "legal
+                    services" provided to the "insured" shall be ended. If any "insured" has an active
+                    matter at the time of termination, the "plan attorney" shall seek to withdraw as
+                    counsel for the "Insured" and the "Insured" shall retain its own counsel within ten
+                    (10) business days of cancellation of the "policy".</p>
+                <p>d. When this "policy" is cancelled by the "insurer", unearned premium will be refunded
+                    pro rata. When this "policy" is cancelled by the "insured", unearned premium will be
+                    refunded at 90% of pro rata. In no event shall the "insured" be entitled to a refund of
+                    any premiums that have been earned by the "insurer".</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">VIII. General Provisions:</h4>
+                
+                <p>a. The "insurer", as part of the implementation of this "policy", either enters into
+                    agreements with "plan attorneys" who have agreed to provide "legal services" to the
+                    "insured(s)" under the conditions under each agreement or has hired an attorney to
+                    provide such "legal services". In none of these instances does the "insurer" stand in
+                    the position of guarantor as to the proficiency, accuracy, or resourcefulness of the
+                    individual "plan attorney" or firm of "plan attorney". Accordingly, if any "plan</p>
+                    
+                    
+                <div>
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:left"> BL POL 03 21</td>
+                            <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                            <td style="text-align:right">Page 7 of 11</td>
+                        </tr>
+                    </table>
+                </div>
+                 <p>attorney" to whom an "insured" uses for a legal matter under this "policy" performs or
+                    omits an act which may give rise to a "claim" for malpractice, the "insured's" sole
+                    recourse will be against the individual "plan attorney" or "plan attorney's" firm, that is
+                    handling that "insured's" legal matter.</p>
+                
+                <p>b. If the "Insured" has any complaint about the "plan attorney" or the services being
+                    provided, the "Insured" agrees to first contact "Bold Legal" at the phone number and
+                    address stated herein and allow the complaint to be resolved by the attorney or "Bold
+                    Legal".</p>
+                
+                <p>c. In the event that an "insured" should have a problem, complaint, or grievance
+                    concerning the "legal services" provided by the "plan attorney", the "insured" may
+                    request a conference with the "plan attorney" and the "insurer" by contacting the
+                    "insurer" at (561) 988-1600. The "insured" may request a conference with an
+                    impartial third party chosen by mutual agreement between "insurer" and "insured". A
+                    conference shall be held with "insurer", "plan attorney", "insured" and the impartial
+                    third party in an effort to resolve the problem, complaint, or grievance.</p>
+                
+                <p>d. If the “Insured(s)” cannot resolve any issue, complaint or dispute with the “Insurer”
+                    or the attorney/law firm provided the “Insurer”, then the “Insured(s)” agree to submit
+                    any and all disputes to binding arbitration in Broward County, Florida, pursuant to the
+                    terms and provisions of the American Arbitration Association. Each side
+                    (“Insured(s)” and “Insurer” and attorney/law firm) shall bear its own attorney’s fees
+                    and costs and waives their right to award any of the applicable statutory fees and
+                    costs.</p>
+                
+                <p>e. Any "insured" has the right to file a grievance with the Florida Bar concerning any
+                    "plan attorney's" conduct. Nothing in this "policy" shall be deemed to interfere with
+                    the Florida Bar Association's right to discipline attorneys for a violation of any Bar
+                    Association Canon or Rule addressing honesty, integrity, or fair dealing. The
+                    grievance resolution procedure in this “policy” addresses only disputes between the
+                    "insurer", "plan attorney", and "insured", involving issues including coverage other
+                    than legal ethics.</p>
+                
+                <p>f. The "insured" agrees that if the attorney or "plan attorney" provided and/or hired by
+                    "Bold Legal" to defend the "Insured" in his or her performance gives rise to a "claim"
+                    for legal malpractice, the "insured's" recourse will be solely against the attorney or
+                    "plan attorney". The "Insured" agrees not to hold "Bold Legal" responsible for any
+                    acts or omissions of the attorney provided by "Bold Legal". If the "Insured" does not
+                    agree to this paragraph then the "Insured" should not accept this "policy" or should
+                    cancel this "policy" within the time limits stated herein.</p>
+</div>
+            
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">IX. Notice:</h4>
+                <p>Any notice required by this "policy" shall be sent to "Bold Legal", in writing, by certified
+                    mail, return receipt requested, or by FedEx or UPS with signature required by "Bold
+                    Legal".</p>
+</div>
+        
+        <div style="padding-left:10%;padding-right:10%;padding-top:6%">
+            <table style="width:100%">
+                <tr>
+                    <td style="text-align:left"> BL POL 03 21</td>
+                    <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                    <td style="text-align:right">Page 8 of 11</td>
+                </tr>
+            </table>
+        </div>
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">X. Severability:</h4>
+                  
+                <p>In the event any provision in this "policy" is unenforceable, the remainder of the "policy"
+                    shall remain in force.</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">XI. Amendments</h4>
+                <p>This "policy" cannot be modified, changed or amended in any way without written
+                    approval from "Bold Legal".</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">XII. Jurisdiction and Venue:</h4>
+                <p>The "insured" and "Insurer" agree that if any dispute arises where legal action is taken,
+                    Broward County, Florida, shall be the agreed upon jurisdiction and venue.</p>
+            </div>
+            
+            <div style="padding-left:10%;padding-right:10%">
+                <h4 style="padding-top:3%;padding-bottom:3%">XIII. Conflict of Interest:</h4>
+                <p>a. If a "claim" is filed against the "insured", by an “insured”, the “insured” filing the
+                    original "claim" shall be excluded from coverage under this "policy".</p>
+                <p>b. If a "claim" is filed against the “insured” as a countersuit to a "claim" filed by the
+                    "insured" no coverage is available under this "policy" for any "insured", unless the
+                    countersuit was filed by the "plan attorney".</p>
+                <p>c. If, at the sole discretion of the "plan attorney" there is a conflict of interest in
+                    representing more than one of the defendants, this "policy" will only provide a
+                    defense for the "insured(s)" not in conflict with the name listed as
+                    insured/policyholder. The remaining defendant(s) will he required to seek its own
+                    legal representation at their own cost.</p>
+</div>
+            
+            <div style="padding-left:10%;padding-right:10%"> 
+                <h4 style="padding-top:3%;padding-bottom:3%">XIV. Representations:</h4>
+                <p>By acceptance of the terms set forth in this "Bold Legal" Insurance Policy, each
+                    “Insured” represents and agrees that the statements contained in the Application, which is
+                    deemed to be attached hereto, incorporated herein, and forming a part hereof, are said
+                    "Insured's" agreements and representations, that such representations are material to the
+                    "Insurer's" acceptance of this risk, that this "Bold Legal" Insurance Policy is issued in
+                    reliance upon the truth of such representations, and embodies all agreements existing
+                    between said "Insured" and Bold Legal Defense Insurance Company, Inc. or any of its
+                    agents. If any statement or representation in the Application is untrue, this "Bold Legal"
+                    Insurance Policy is void and of no effect whatsoever.</p>
+            </div>
+         <div>
+            <table style="width:100%;padding-left:10%;padding-right:10%">
+                <tr>
+                    <td style="text-align:left"> BL POL 03 21</td>
+                    <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                    <td style="text-align:right">Page 9 of 11</td>
+                </tr>
+            </table>
+        </div>
+            <div style="padding-left:10%;padding-right:10%">
+                <strong>IN WITNESS WHEREOF</strong>, Bold Legal Defense Insurance Company, Inc. has executed and
+                attested these presents.
+            </div>
+        <br/>
+        
+        
+            <div style="padding-left:10%;padding-right:10%">
+                
+                <table  style="width:70%; border-top: solid 0.5px Black">
+                    
+                </table>
+                <p>President, Bold Legal Defense Insurance Company, Inc.</p>
+                
+            </div>
+        <br/>
+            <div style="padding-left:10%;padding-right:10%">
+                If "you" need to file a "claim", obtain information about coverage, or need assistance resolving a
+                complaint, please call: (561) 988·1600
+            </div>
+        <br/>
+        
+            <div style="padding-left:10%;padding-right:10%">
+                <h4>ENTIRE AGREEMENT</h4>
+                <br/>
+                <p>This Legal Expense Insurance Policy Coverage Form, including the Declarations, the
+                    Application, and any endorsements attached thereto, constitute the entire agreement between
+                    Bold Legal Defense Insurance Company, Inc. and the "Insured".</p>
+            </div>
+            
+             <div style="padding-top:80%;padding-left:10%;padding-right:10%">
+            <table style="width:100%">
+                <tr>
+                    <td style="text-align:left"> BL POL 03 21</td>
+                    <td style="text-align:center"> Bold Legal Defense Insurance Company, Inc.</td>
+                    <td style="text-align:right">Page 10 of 11</td>
+                </tr>
+            </table>
+        </div>
+       
+        
+    </body>
+</html>
+</apex:page>

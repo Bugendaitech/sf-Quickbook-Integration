@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Claim__c.Insured__c</field>
+    </columns>
+    <columns>
+        <field>Claim__c.Policy__c</field>
+    </columns>
+    <columns>
+        <field>Claim__c.Claim__c</field>
+    </columns>
+    <columns>
+        <field>Claim__c.Status_Flag__c</field>
+    </columns>
+    <columns>
+        <field>Claim__c.Case__c</field>
+    </columns>
+    <columns>
+        <field>Claim__c.Claim_Summary__c</field>
+    </columns>
+    <columns>
+        <field>Claim__c.County__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>All Claims</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>CustomEntity$Claim__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Claim__c.CGL_Claim_Filed__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,291 @@
+<template>
+  <lightning-card>
+     <div class="slds-var-m-around_medium">
+        <div class="slds-align_absolute-center">
+           <lightning-spinner if:false={spinnerStatus} variant="brand" size="medium">
+           </lightning-spinner>
+        </div>
+          <c-custom-toast-notification
+           timeout={timeout}
+           sticky={sticky}
+           ></c-custom-toast-notification>
+
+           <lightning-layout multiple-rows>
+            <lightning-layout-item size="3">
+                  <p class="slds-truncate slds-m-bottom_xx-small"><b>Insured Information:</b></p>
+                    <div class="slds-text-body_regular slds-truncate">
+                      <span title="Display Name">{_QB_Company_Name__c}<br></span>
+                      <span title="Billing Street">{_QB_Street_Address__c}<br></span>
+                      <span title="Billing City Billing State Billing Zip">{_QB_City__c}&nbsp;{_QB_Region__c}<br></span>
+                            <span title="Billing Country">{_QB_Postal_Code__c}&nbsp;{_QB_Country__c}</span>
+                    </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="3">  
+               <p class="slds-truncate slds-m-bottom_xx-small"><b>Agency Info:</b></p>
+                    <div class="slds-text-body_regular slds-truncate">
+                      <span title="Display Name">{_QB_Given_First_Name__c}<br></span>
+                      <span title="Billing Street">{_QB_Email__c}<br></span>
+                      <span title="Billing Country">{_QB_Phone_Number__c}</span>
+                    </div>                                
+            </lightning-layout-item> 
+         </lightning-layout>
+           <br> 
+
+        <div class="slds-section slds-is-open">
+           <h3 class="slds-section__title slds-theme_shade"> 
+              <span class="slds-truncate slds-p-horizontal_small" title="Section Title" style="letter-spacing: .0625rem;">INVOICE DETAILS</span>
+           </h3>
+           <div aria-hidden="false" class="slds-section__content">
+              <p class="slds-var-m-around_medium">
+                 <lightning-layout multiple-rows>
+                    <lightning-layout-item size="4">
+                       <label>Terms</label>
+                       <select class="slds-select" data-field="term">
+                          <option value="none">None</option>
+                          <!-- <option value="1% 10 Net 30">1% 10 Net 30</option>
+                          <option value="2% 10 Net 30">2% 10 Net 30</option>
+                          <option value="Net 30">Net 30</option>
+                          <option value="Net 60">Net 60</option>
+                          <option value="Consignment">Consignment</option>
+                          <option value="Due on Inception" selected="selected">Due on Inception</option>
+                          <option value="Net 10">Net 10</option>
+                          <option value="Net 15">Net 15</option> -->
+                           <option value="1" selected="">Due on Inception</option>
+                           <option value="5">Net 10</option>
+                           <option value="2">Net 15</option>
+                           <option value="3">Net 30</option>
+                           <option value="4">Net 60</option>
+                       </select>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">
+                       <b></b>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4">
+                       <label>Invoice Number</label><br>
+                       <b>Auto Determined By QuickBooks</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">
+                    </lightning-layout-item>
+                 </lightning-layout>
+                 <lightning-layout multiple-rows>
+                    <lightning-layout-item size="4">
+                       <lightning-input  data-field="invoice-date" type="date" label="Invoice Date" value={calculateInvoice}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">                                   
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4">
+                       <lightning-input  data-field="email" type="email" label="Email" value="" ></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">                    
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4">
+                       <lightning-input  data-field="due-date" type="date" label="Due Date" value={_duedateval} class="required"></lightning-input>
+                       <span style="color:red;">{_dueDateRequiredMsg}</span>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4">
+                       <!-- You can send emails to multiple people,by adding more emails,seperated by 
+                       commas.
+                       <lightning-helptext content=""></lightning-helptext>
+                       you must then choose "Create and Email Invoice via QuickBooks" 
+                       below -->
+                    </lightning-layout-item>
+                 </lightning-layout>
+              </p>
+           </div>
+        </div>
+        <c-expandable-section-c-m-p id="1" label="BILLING ADDRESS" style="letter-spacing: .0625rem;">
+           <div class="slds-var-m-around_medium">
+              <Span><b>Billing Details :</b></Span>  
+              <lightning-layout>
+                 <lightning-layout-item size="2">
+                    <lightning-textarea name="input1" align="middle" data-field="street" label="Street Address" value={street}></lightning-textarea>
+                 </lightning-layout-item>
+                 &nbsp; &nbsp; &nbsp;       
+                 <lightning-layout-item size="2">
+                    <lightning-input  type="text" data-field="city" label="City" value={city} ></lightning-input>
+                 </lightning-layout-item>
+                 &nbsp;  &nbsp; &nbsp;               
+                 <lightning-layout-item size="2">
+                    <lightning-input  type="text" data-field="state" label="State" value={state} ></lightning-input>
+                 </lightning-layout-item>
+                 &nbsp;   &nbsp; &nbsp;              
+                 <lightning-layout-item size="2">
+                    <lightning-input  type="text" data-field="postal-code" label="Postal Code" value={postalCode} ></lightning-input>
+                 </lightning-layout-item>
+                 &nbsp;   &nbsp; &nbsp;
+                 <lightning-layout-item size="2">
+                    <lightning-input  type="text" data-field="country" label="Country" value="USA" ></lightning-input>
+                 </lightning-layout-item>
+              </lightning-layout>
+           </div>
+        </c-expandable-section-c-m-p>
+        <Span style="padding-left:11px"><b>Custom Fields</b></Span>      
+        <lightning-layout class="slds-p-horizontal_small">
+           <lightning-layout-item size="3">
+              <lightning-input  type="text" data-field="policy" label="Policy#" value="" class="required"></lightning-input>
+              <span style="color:red;">{_policyRequiredMsg}</span>
+           </lightning-layout-item>
+           <lightning-layout-item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lightning-layout-item>
+           <lightning-layout-item size="3">
+              <lightning-input  type="text" data-field="sales-rep" label="Sales Rep" value="" class="required"></lightning-input>
+              <span style="color:red;">{_salesRepRequiredMsg}</span>
+           </lightning-layout-item>
+           <lightning-layout-item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lightning-layout-item>
+           <lightning-layout-item size="3">
+              <lightning-input  type="date" data-field="inception-date" label="Inception Date" value="" class="required"></lightning-input>
+              <span style="color:red;">{_inceptionRequiredMsg}</span>
+           </lightning-layout-item>
+        </lightning-layout>
+        <br> 
+        <div class="slds-p-horizontal_medium">
+           <table class="slds-table slds-table_cell-buffe table slds-scrollable ownTable">
+              <thead>
+                 <tr>
+                    <th class="th1"><b>PRODUCT/SERVICE</b></th>
+                    <th class="th2"><b>DESCRIPTION</b></th>
+                    <th class="th3"><b>ACCOUNT</b></th>
+                    <th class="th4"><b>QUANTITY</b></th>
+                    <th class="th5"><b>RATE</b></th>
+                    <th class="th6"><b>AMOUNT</b></th>
+                    <th class="th7"><b>TAX</b></th>
+                    <th class="th8"></th>
+                 </tr>
+              </thead>
+              <tbody>
+                 <template for:each={lineItemList} for:item="line" for:index="indx">
+                    <tr key={line.key} id={line.key} class="slds-hint-parent">
+                       <td>
+                          <select class="slds-select" name="optionSelect" data-field="first-option" data-id={indx} onchange={handleServiceChange}>
+                             <template if:false={line.showAll}>
+                                <template if:true={line.grossTrue}>
+                                   <option value="None">--None--</option>
+                                   <option value="Gross Premium" selected="">Gross Premium</option>
+                                   <option value="Commissions" >Commissions</option>
+                                </template>
+                                <template if:true={line.commTrue}>
+                                   <option value="None">--None--</option>
+                                   <option value="Gross Premium" >Gross Premium</option>
+                                   <option value="Commissions" selected="">Commissions</option>
+                                </template>
+                             </template>
+                             <template if:true={line.showAll}>
+                                <option value="None">--None--</option>
+                                <option value="Gross Premium" >Gross Premium</option>
+                                <option value="Commissions" >Commissions</option>
+                             </template>
+                          </select>
+                       </td>
+                       <td>
+                          <lightning-input name="input1" type="text" align="middle" data-field="grossDesc" data-id={indx} onchange={handleDescChange} value={line.serDesc}></lightning-input>
+                       </td>
+                       <td>
+                          <input type="text" readonly=""  class="slds-input input-center" value={line.serAccount} />
+                       </td>
+                       <td>
+                          <input type="number"  class="slds-input input-center" min="1" data-id={indx} onchange={handleQuantityChange} value={line.serQuantiy} />
+                          <!-- <lightning-formatted-number format-style="decimal" value={line.serQuantiy} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number> -->
+                       </td> 
+                       <td>
+                          <input type="number"  class="slds-input input-center" min="0" data-id={indx} onchange={handleRateChange} value={line.serRate} />
+                          <!-- <lightning-formatted-number format-style="decimal" value={line.serQuantiy} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number> -->
+                       </td>
+                       <td>
+                          <!-- <input type="text" readonly=""  class="slds-input input-center" value={line.serRate} /> -->
+                          <template if:true={line.showAll}>
+                             <lightning-formatted-number readonly="" format-style="currency" value={line.serAmountS} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                          </template>
+                          <template if:true={line.commTrue}>
+                             <lightning-formatted-number readonly="" format-style="currency" value={line.serAmountS} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                          </template>
+                          <template if:true={line.grossTrue}>
+                             <lightning-formatted-number readonly="" format-style="currency" value={line.serAmountS} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+                          </template>
+                       </td>
+                       <td>          
+                          <input type="checkbox" name="label" value="option" align="middle" />       
+                       </td>
+                       <td>
+                          <template if:true={line.ShowDel}>
+                             <lightning-button-icon icon-name="utility:close" data-id={indx}  onclick={removeRow}  alternative-text="Delete" class="slds-m-left_xx-small crossbtn" title="Delete"></lightning-button-icon>
+                          </template>
+                       </td>
+                    </tr>
+                 </template>
+              </tbody>
+           </table>
+        </div>
+        <lightning-layout multiple-rows="true" class="slds-p-horizontal_medium">
+           <lightning-layout-item size="3">
+              <span onclick={addRow} class="addMore">Add more lines</span>
+           </lightning-layout-item>
+           <lightning-layout-item size="5">         
+           </lightning-layout-item>
+           <lightning-layout-item size="2">
+           </lightning-layout-item>
+           <lightning-layout-item size="1">
+              <p>SubTotal</p>
+           </lightning-layout-item>
+           <lightning-layout-item size="1">
+              <p style="text-align:right">${finalAmount}</p>
+           </lightning-layout-item>
+        </lightning-layout>
+        <br>
+        <lightning-layout multiple-rows="true"  class="slds-p-horizontal_medium">
+           <lightning-layout-item size="3">
+              <p>Message Displayed on Invoice</p>
+           </lightning-layout-item>
+           <lightning-layout-item size="5">         
+           </lightning-layout-item>
+           <lightning-layout-item size="2">
+           </lightning-layout-item>
+           <lightning-layout-item size="1">
+              <p>Taxable SubTotal</p>
+           </lightning-layout-item>
+           <lightning-layout-item size="1">
+              <p style="text-align:right">$00.00</p>
+           </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout multiple-rows="true"  class="slds-p-horizontal_medium">
+           <lightning-layout-item size="3">
+            <lightning-textarea name="input1" align="middle" value={text} data-field="message"></lightning-textarea>
+           </lightning-layout-item>
+           <lightning-layout-item size="5">    
+           </lightning-layout-item>
+           <lightning-layout-item size="2">
+           </lightning-layout-item>
+           <lightning-layout-item size="1">
+              <b>Total</b>
+           </lightning-layout-item>
+           <lightning-layout-item size="1" style="text-align:right">
+              <b >${finalAmount}</b>
+           </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout multiple-rows="true">
+           <lightning-layout-item size="3" style="padding-left: 17px;">
+              <p>Statement Memo</p>
+           </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout multiple-rows="true"  class="slds-p-horizontal_medium">
+           <lightning-layout-item size="3">
+              <lightning-textarea name="statement" data-field="statement" align="middle" ></lightning-textarea>
+           </lightning-layout-item>
+        </lightning-layout>
+     </div>
+  </lightning-card>
+  <lightning-card>
+     <div class="wrapper slds-p-horizontal_medium">
+        <p class="our-tagline">Once you click create, will post this to QuickBooks and provide you the URL if you wish to edit it further.</p>
+        <!-- <lightning-button label="Finish" variant="brand" onclick={handleFinish}></lightning-button> -->
+        <div style="right:0px">
+           <button type="button"  onclick={createInvoiceHandler} class="slds-button slds-button_brand slds-float_right" disabled={disableInvoiceCreate}>Create Invoice in QuickBooks</button>
+        </div>
+        <br>
+        <br>
+        <!-- <div align="right">
+           Want to create and send the Invoice via QuickBooks?
+        </div> -->
+     </div>
+  </lightning-card>
+</template>

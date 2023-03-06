@@ -1,0 +1,24 @@
+.main-container{
+    padding: 10px;
+}
+
+.wrapper{
+    text-align: center;
+}
+/* lightning-progress-indicator{
+    padding:1px 20px 8px 20px!important;
+} */
+/* .slds-button_neutral{
+    display: none!important;
+} */
+.our-tagline{
+    text-align: left;
+}
+
+hr{
+    margin:0px;
+}
+
+.indicator-card  .slds-card{
+    border: none !important;
+}

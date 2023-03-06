@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MobileApplicationDetail xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationInstallUrl>https://play.google.com/store/apps/details?id=com.salesforce.service.lightning</applicationInstallUrl>
+    <devicePlatform>android</devicePlatform>
+    <privateApp>false</privateApp>
+    <version>1</version>
+</MobileApplicationDetail>

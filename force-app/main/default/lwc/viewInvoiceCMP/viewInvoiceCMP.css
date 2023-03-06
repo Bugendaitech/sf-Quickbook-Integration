@@ -1,0 +1,305 @@
+.slds-scope .slds-table {
+    background-color: rgb(255, 255, 255);
+    font-size: inherit;
+}
+
+.slds-scope table {
+    width: 100%;
+    /* border-collapse: collapse;
+    border-spacing: 0; */
+}
+.div-table-style {
+    display: inline-table;
+}
+table {
+    display: table;
+    /* border-collapse: separate; */
+    box-sizing: border-box;
+    text-indent: initial;
+    /* border-spacing: 2px; */
+    /* border-color: grey; */
+}
+.alignrightt {
+    text-align: right;
+    padding-right: 2rem;
+}
+.form-label-alignment {
+    vertical-align: top;
+    padding-right: 2px;
+}
+.slds-scope .slds-size_1-of-3, .slds-scope .slds-size--1-of-3 {
+    width: 33.3333333333%; 
+}
+.slds-scope .slds-card__header {
+    padding-top: 0.75rem;
+    padding-right: 1rem;
+    padding-bottom: 0;
+    padding-left: 1rem;
+    margin: 0 0 0.75rem;
+}
+.slds-scope .slds-border_bottom, .slds-scope .slds-border--bottom {
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+.slds-scope .slds-p-bottom_small, .slds-scope .slds-p-bottom--small {
+    padding-bottom: 0.75rem;
+}
+.slds-wrap{
+    flex-wrap:wrap;
+    align-items:flex-start;
+}
+
+.slds-scope .slds-truncate {
+    max-width: 100%;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.slds-scope .slds-border_bottom, .slds-scope .slds-border--bottom {
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+.slds-scope .slds-p-bottom_small, .slds-scope .slds-p-bottom--small {
+    padding-bottom: 0.75rem;
+}
+.slds-scope .slds-card__header {
+    padding-top: 0.75rem;
+    padding-right: 1rem;
+    /* padding-bottom: 0; */
+    padding-left: 1rem;
+    margin: 0 0 0.75rem;
+}
+.slds-scope *, .slds-scope *:before, .slds-scope *:after {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.slds-scope .slds-card {
+    position: relative;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(201, 201, 201);
+    border-radius: 0.25rem;
+    background-clip: padding-box;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+    color: var(--slds-c-card-text-color, var(--sds-c-card-text-color));
+}
+.div-table-style {
+    display: inline-table;
+}
+.slds-scope {
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+    font-size: 100%;
+    line-height: 1.5;
+    background: rgba(176, 196, 223, 1);
+    color: rgb(24, 24, 24);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.slds-scope {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    margin: 0;
+}
+
+.slds-scope .slds-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: rgb(255, 255, 255);
+}
+.slds-scope audio, .slds-scope canvas, .slds-scope iframe, .slds-scope img, .slds-scope svg, .slds-scope video {
+    vertical-align: middle;
+}
+.slds-scope *, .slds-scope *:before, .slds-scope *:after {
+    box-sizing: border-box;
+}
+
+.slds-scope .slds-icon-custom-custom93, .slds-scope .slds-icon-custom-93 {
+    background-color: #904d4c;
+    color: rgb(255, 255, 255);
+}
+.slds-scope .slds-icon_container, .slds-scope .slds-icon__container {
+    display: inline-block;
+    border-radius: 0.25rem;
+    line-height: 1;
+    background-color: transparent;
+}
+.slds-scope .slds-card {
+    position: relative;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(201, 201, 201);
+    border-radius: 0.25rem;
+    background-clip: padding-box;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+    color: var(--slds-c-card-text-color, var(--sds-c-card-text-color));
+}
+
+.slds-scope {
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+    font-size: 100%;
+    line-height: 1.5;
+    background: rgba(176, 196, 223, 1);
+    color: rgb(24, 24, 24);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.slds-scope .slds-table thead th {
+    background-color: rgb(250, 250, 249);
+}
+.slds-scope .slds-table thead th {
+    background-color: rgb(243, 243, 243);
+    color: rgb(68, 68, 68);
+    padding: 0.25rem 0.5rem;
+    font-weight: 700;
+    /* line-height: normal; */
+}
+.Borderstyling th:nth-child(1), .Borderstyling td:nth-child(1) {
+    border-left: initial;
+}
+.slds-scope .slds-table_bordered, .slds-scope .slds-table--bordered {
+    border-collapse: separate;
+    border-top: 1px solid rgb(229, 229, 229);
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+.slds-scope .slds-table {
+    /* background-color: rgb(255, 255, 255); */
+    font-size: inherit;
+}
+.slds-scope table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    /* border-spacing: 2px; */
+}
+/* .slds-scope .slds-table thead th {
+    background-color: rgb(250, 250, 249);
+}
+.slds-scope .slds-table thead th {
+    color: rgb(68, 68, 68);
+    padding: 0.25rem 0.5rem;
+    font-weight: 700;
+    line-height: normal;
+} */
+.slds-scope .slds-form-element__label {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    display: inline-block;
+    font-size: .75rem;
+    /* padding-right: 0.5rem; */
+    margin-bottom: 0.125rem;
+    /* padding-right: 0.5rem */
+}
+.slds-form-element__label {
+    padding-top: unset;
+    padding-right: 0.5rem
+}
+.slds-scope .slds-theme_info {
+    background-color: rgba(84,105,141,.95);
+}
+.slds-scope .slds-theme_info, .slds-scope .slds-theme--info {
+    color: rgb(255, 255, 255);
+    /* background-color: rgb(116, 116, 116); */
+}
+.slds-scope .slds-modal__header .slds-modal__close {
+    position: absolute;
+    top: -2.5rem;
+    right: -0.5rem;
+    margin-left: 0;
+    bottom: 0;
+}
+.slds-scope .slds-modal__close {
+    width: 2rem;
+    height: 2rem;
+    margin-left: auto;
+    position: relative;
+    bottom: 0.5rem;
+    right: -0.5rem;
+}
+.slds-scope .slds-modal {
+    /* opacity: 0;
+    visibility: hidden;
+    transition: transform .1s linear,opacity .1s linear; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9001;
+}
+.slds-scope .slds-modal__container {
+    margin: 0 auto;
+    width: 50%;
+    max-width: 40rem;
+    min-width: 20rem;
+}
+.slds-scope .slds-modal__container {
+    position: relative;
+    transform: translate(0, 0);
+    transition: transform .1s linear,opacity .1s linear;
+    display:flexbox;
+    flex-direction: column;
+    justify-content: center;
+    /* margin: 0 2rem;  */
+    height: 100%;
+    padding: 3rem 0 5rem 0;
+    border-radius: 0.25rem;
+}
+.slds-scope *, .slds-scope *:before, .slds-scope *:after {
+    box-sizing: border-box;
+}
+.rightsection {
+    float: right !important;
+}
+.rightTable td.first {
+    padding-bottom: 5px;
+    text-align: right;
+    width: 60%;
+}
+.rightTable td.second {
+    float: right;
+    padding-right: 9px;
+}
+.Borderstyling td, .Borderstyling th {
+    border-left: 1px solid rgb(221, 219, 218);
+}
+.slds-scope .slds-card__body_inner, .slds-scope .slds-card__body--inner {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.totalAmount{
+    font-size: 14pt;
+    font-weight: 700;
+    text-align: right!important;
+}
+
+
+.open-class{ 
+    color: orange;
+}
+
+.closed-class{
+    color:#c75c29
+}
+
+.paid-class{
+    color: lightblue;
+}
+
+.overdue-class{
+    color:#c75c29;
+}

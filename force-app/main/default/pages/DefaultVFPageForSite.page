@@ -1,0 +1,7 @@
+<apex:page ><!--action="{!URLFOR('/answers/answersHome.apexp')}"-->
+    <html>
+        <p>
+            Welcome In BoldLegal
+        </p>
+    </html>
+</apex:page>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Make_a_1</fullName>
+        <field>PFactor__c</field>
+        <formula>1</formula>
+        <name>Make a 1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Make_a_5</fullName>
+        <field>PFactor__c</field>
+        <formula>5</formula>
+        <name>Make a 5</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>spargo</fullName>
+        <field>BillingStreet</field>
+        <formula>&quot;10368 W. State Road 84, Suite 201&quot;</formula>
+        <name>spargo</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Make a 1</fullName>
+        <actions>
+            <name>Make_a_1</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Type_of_Risk__c</field>
+            <operation>equals</operation>
+            <value>Condominium,Homeowner Association</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Make a 5</fullName>
+        <actions>
+            <name>Make_a_5</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Type_of_Risk__c</field>
+            <operation>equals</operation>
+            <value>Apt./Hotel/Time Share</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Application</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.Number_of_Units__c</field>
+            <operation>greaterThan</operation>
+            <value>-1</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>spargo</fullName>
+        <actions>
+            <name>spargo</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Producer_Last_Name__c</field>
+            <operation>equals</operation>
+            <value>Spargo</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>Getting_Started</defaultLandingTab>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <tabs>Getting_Started</tabs>
+    <tabs>standard-Chatter</tabs>
+    <tabs>standard-UserProfile</tabs>
+    <tabs>standard-OtherUserProfile</tabs>
+    <tabs>standard-CollaborationGroup</tabs>
+    <tabs>standard-File</tabs>
+    <tabs>Landing_Page</tabs>
+    <tabs>Agency__c</tabs>
+    <tabs>Policy__c</tabs>
+    <tabs>Claim__c</tabs>
+    <tabs>Producer__c</tabs>
+    <tabs>Quote__c</tabs>
+    <tabs>NewApp__c</tabs>
+    <tabs>QB_Line_Item__c</tabs>
+    <tabs>QB_Company__c</tabs>
+    <uiType>Aloha</uiType>
+</CustomApplication>

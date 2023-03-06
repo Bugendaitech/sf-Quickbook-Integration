@@ -1,0 +1,254 @@
+<apex:page showHeader="false" cache="true" readOnly="true"><!--renderAs="pdf" showHeader="false" cache="true" readOnly="true"-->
+<html>
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>PL POLICY PDF</title>
+        </head>
+        <body>
+            <div class="" style="max-width: 800px; margin:auto; width: 100%; background: #fff">
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="padding:0">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="text-align:left;">
+                                                    <table style="width:70%">
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <p style= "font-size:9pt;">READ YOUR POLICY</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;width:20px;margin-top: 0px;">DATE</p></td>
+                                                            <td>
+                                                                <p  style="font-family:Arial; font-size:8pt; color:#1d1c1d; background-color:#f8f8f8;text-align:left;margin-top: 0px;">November 21, 2022</p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;margin-top: 0px;">POLICY NUMBER</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: 0px;">20222111BT</p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="margin-left: 4px;font-size:10pt;margin-top: 0px;margin-bottom: 0px;">Prior Policy Number</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: 0px;margin-top: 0px;margin-bottom: 0px;text-align:left">20222111BT</p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="text-align:right;padding-top:0px; font-size:12px">
+                                                    <apex:image url="{!$Resource.BoldLegalLogo}" width="150" height="60"/>
+                                                    <p style="margin:1px">2385 N.W. Executive Center Drive</p>
+                                                    <p style="margin:1px"> Suite 100</p>
+                                                    <p style="margin:1px">Boca Raton, FL 33431</p>
+                                                    <p style="margin:1px">(561)988-1600</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0;">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="text-align:left;">
+                                                    <table style="width:80%">
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;padding-bottom:0px">POLICY PERIOD </p>
+                                                                <table style="width: 100%; max-width: 450px;padding-left: 8%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td><p style="margin-top: 0px;margin-bottom: -80px;font-size:9pt;line-height:10.3pt">INCEPTION DATE</p>
+                                                                            </td>
+                                                                            <td><p style="margin-bottom: 0px;font-size:9pt;">1/21/2022 12:00:00 AM</p></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">EXPIRATION DATE</p></td>
+                                                                            <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">1/21/2022 12:00:00 AM</p></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="3" style="padding-top: 5px;">
+                                                                                <small style="margin-left: 40px;font-family:Calibri; font-size:8.5pt">12:01 a.m. at the mailing address of the insured </small>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td><p style="line-height: 16px;font-size:9pt; color:#252324">THIS POLICY ONLY PROVIDES DEFENSE COVERAGE AS SCHEDULED IN THE POLICY FORM AND ENDORSEMENTS. THERE IS NO COVERAGE FOR ANY OTHER EXPENSE, INDEMNIFICATION SETTLEMENT OR JUDGEMENT. </p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td style="width: 80px;font-size:9pt;"><p>INSURED</p></td>
+                                                            <td><p style="font-size:9pt;">John Stevert </p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td>
+                                                                <table style="width:100%; max-width:200px">
+                                                                    <tr>
+                                                                        <td><p style="margin-bottom: 0px;font-size:9pt;">LOCATION</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;font-size:9pt;">Street 23/A </p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">ADDRESS</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">Street 23/A</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">City </p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">US 45141 </p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td></td>
+                                                            <td>
+                                                                <table style="width:100%; max-width:200px">
+                                                                    <tr>
+                                                                        <td><p style="margin-bottom: 0px;margin-top:0px;font-size:9pt;">MAILING</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">Street 23/A</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><p style="margin-top: 0px;margin-bottom: 0px;font-size:9pt;">ADDRESS</p></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">Street 23/A</p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">City </p></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><p style="font-size: 10px;margin-bottom: 0px;margin-top: 0px;font-size:9pt;">US 45141 </p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                    
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 550px;">
+                                                        <tr>
+                                                            <td><p style="font-size:9pt">LIMITS OF LIABILITY</p></td>
+                                                            <td><p style="font-size:9pt">Duty to Defend all as per policy form </p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">DEDUCTIBLE</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">NONE</p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">PREMIUM</p></td>
+                                                            <td><p style="font-size:9pt;margin-top: -1%;">$ 253</p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <!---here --->
+                                             <tr>
+                                                <td  >
+                                                    <table style="width:100%; max-width: 300px">
+                                                        <tr>
+                                                            <td colspan="2" style="padding-bottom:0;font-size:9pt;padding-left: 4%;"><p>POLICY FORMS and ENDORSEMENTS </p></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%;"></td>
+                                                            <td style="padding-top:0px;"><small style="font-size:9pt; color:#1f3763">BL-POL 03-21 <br/> Signed Application</small></td>
+                                                        </tr>
+                                                      
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                           
+                                                
+                                                <tr>
+                                                    <td colspan="1"><table style="width:100%;">
+                                                        <tbody><tr>
+                                                            <td style="width:10%"><p style="padding-right: 8px;font-size:9pt">AGENT</p></td>
+                                                            <td style="width:40%;">
+                                                                <p style="margin-top: 0px;margin-bottom: 0px;padding-top:0px;font-size:8pt;">COSTA CORPORATE CENTRE CONDOMINIUM NO. 
+                                                                    ONE ASSOCIATION, INC</p>
+                                                            </td>
+                                                            <td style="width:50%"> <p style="float:left;font-size:8pt;text-align:justify">8700 West Flagler Street #402<br/>
+                                                                Miami<br/>
+                                                                FL 33155</p></td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                            </tr> 
+                                            <!---here --->
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%;">
+                                                        <tr>
+                                                            <td width="12%"></td>
+                                                            <td ><small style="max-width: 800px; display:block; margin: 0 0 0 auto;font-family:Calibri; font-size:8.5pt">This DECLARATION PAGE, together with the APPLICATION, The POLICY FORM,and <br/> all endorsements thereto, shall constitute the contract between the "Insurer" and the "Insured". <br/>
+                                                                This Policy is valid only if signed below by a duly authorized representative of the "Insurer"</small></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+</tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                   <p style="margin-top:20.15pt; margin-left:7.45pt; margin-bottom:0pt; text-align:justify; line-height:16.35pt"><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">Countersigned</span><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d; -aw-import:spaces">&nbsp; </span><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">By</span><span style="font-family:'Vladimir Script'; font-size:13pt; letter-spacing:45.95pt; color:#1e1d1d"> </span><span style="font-family:'Vladimir Script'; font-size:13pt; color:#1e1d1d">Steve</span><span style="font-family:'Vladimir Script'; font-size:13.5pt; color:#1e1d1d"> Lubell</span></p>
+                                                    <p style="margin-top:0pt; margin-left:7.45pt; margin-bottom:0pt; text-align:justify; line-height:8.35pt"><span style="font-family:Arial; font-size:7.5pt; color:#1e1d1d">IN WITNESS WHEREOF, the Company has caused this policy to be signed by its authorized officers.</span></p>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">
+                                                    <table style="width:100%; max-width: 600px">
+                                                        <tr>
+                                                            <td width="50%">
+                                                                <p style="color: #6868b1;"><strong><em>Policy Form included</em></strong></p>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td></td>
+                                            </tr>                  
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+     </html>
+</apex:page>

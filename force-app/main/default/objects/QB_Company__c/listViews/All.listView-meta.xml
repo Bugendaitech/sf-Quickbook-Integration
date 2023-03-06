@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>QB_Display_Name__c</columns>
+    <columns>QB_Company_Name__c</columns>
+    <columns>QB_Salesforce_Account__c</columns>
+    <columns>QB_Currency__c</columns>
+    <columns>QB_Phone_Number__c</columns>
+    <columns>QB_Email__c</columns>
+    <columns>QB_City__c</columns>
+    <columns>QB_Region__c</columns>
+    <columns>QB_External_Id__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>All</label>
+</ListView>

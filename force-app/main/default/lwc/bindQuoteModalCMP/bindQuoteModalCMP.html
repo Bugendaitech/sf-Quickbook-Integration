@@ -1,0 +1,23 @@
+<template>
+    <!-- <lightning-card> -->
+            <div class="slds-var-m-around_medium" style=" text-align:center;">
+                
+            
+                <p  class="slds-var-m-around_medium" style=" text-align:center;font-size:large">Type of Quote</p>
+                <!-- <label></label> -->
+                <select class="slds-select selectbox" onchange={onchangeHandler}>
+                   <option value="QuoteRenewal" selected="">Quote Renewal</option>
+                   <option value="NewCustomer">New Client</option>
+                </select>
+            </div>
+            <p  class="slds-var-m-around_medium" style=" text-align:center;font-size:medium">
+                <lightning-input label="Have you Verified Producer ?" class="slds-p-left_xx-large" type="checkbox" onchange={handlecheckboxVal} ></lightning-input>
+                <template if:true={anyError}>
+                    <p style="font-size: 10pt;">{errorMessage}</p>
+                </template>
+            </p>
+            <div  class="slds-var-m-around_medium wrapper">
+                <button type="button" onclick={handleContinue} disabled={showbutton} class="slds-button slds-button_brand">Continue</button>
+            </div>
+    <!-- </lightning-card> -->
+</template>

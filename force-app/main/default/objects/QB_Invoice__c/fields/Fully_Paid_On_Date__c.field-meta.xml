@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fully_Paid_On_Date__c</fullName>
+    <description>It is the latest date of Payment Dates, when the invoice is Paid.</description>
+    <externalId>false</externalId>
+    <label>Fully Paid On Date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

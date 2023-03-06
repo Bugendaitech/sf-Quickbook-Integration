@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_qbo__Invoice__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Master of the line item</description>
+    <externalId>false</externalId>
+    <label>Invoice</label>
+    <referenceTo>breadwinner_qbo__Invoice__c</referenceTo>
+    <relationshipLabel>Line Items</relationshipLabel>
+    <relationshipName>Line_Items</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

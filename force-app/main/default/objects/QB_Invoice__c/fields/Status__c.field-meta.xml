@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISBLANK( Internal_Status__c ),
+CASE(
+Type__c,
+
+&apos;Sales Receipt&apos;, &apos;Paid&apos;,
+&apos;Refund Receipt&apos;, &apos;Paid&apos;,
+
+&apos;Invoice&apos;, IF( Amount_Overdue__c &gt; 0,
+&apos;Overdue&apos;,
+IF( Amount_Due__c &gt; 0,
+IF( Amount_Received__c &gt; 0,
+&apos;Partial&apos;,
+&apos;Open&apos;
+),
+&apos;Paid&apos;
+)
+),
+
+IF( Credit_Memo_Unallocated_Credit__c &gt; 0,
+&apos;Unapplied&apos;,
+&apos;Closed&apos;
+)
+),
+Internal_Status__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
